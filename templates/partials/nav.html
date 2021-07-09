@@ -1,9 +1,14 @@
 <a href="{% url "core:home" %}">BUSKER</a>
 <ul>
     {% if user.is_authenticated %}
+    <li>
         {{user.username}}
         <a href="{% url 'users:logout' %}">Logout</a>
+    </li>
     {% else %}
+    <li>
         <a href="{% url 'users:login' %}">Login</a>
+        <a href="{% url 'users:signup' %}">Sign Up</a>
+    </li>
     {% endif %}
 </ul>
