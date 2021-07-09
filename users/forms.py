@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.db.models import fields
+from django.forms import ModelForm
 from django.forms import models
 from django.forms.widgets import PasswordInput
 from . import models
@@ -23,11 +24,16 @@ class LoginForm(forms.Form):
             self.add_error("email", forms.ValidationError("User does not exist"))
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = [
+            "email",
+            "nickname",
+            "first_name",
+            "last_name",
+        ]
 
-    email = forms.EmailField()
-    first_name = forms.CharField(max_length=80)
-    last_name = forms.CharField(max_length=80)
     password = forms.CharField(widget=PasswordInput)
     password1 = forms.CharField(widget=PasswordInput, label="Confirm Password")
 
@@ -39,6 +45,14 @@ class SignUpForm(forms.Form):
         except models.User.DoesNotExist:
             return email
 
+    def clean_nickname(self):
+        nickname = self.cleaned_data.get("nickname")
+        try:
+            models.User.objects.get(nickname=nickname)
+            raise forms.ValidationError("User already exists with that nickname.")
+        except models.User.DoesNotExist:
+            return nickname
+
     def clean_password1(self):
         password = self.cleaned_data.get("password")
         password1 = self.cleaned_data.get("password1")
@@ -48,11 +62,11 @@ class SignUpForm(forms.Form):
             return password
 
     def save(self):
+        user = super().save(commit=False)
         email = self.cleaned_data.get("email")
-        first_name = self.cleaned_data.get("first_name")
-        last_name = self.cleaned_data.get("last_name")
+        nickname = self.cleaned_data.get("nickname")
         password = self.cleaned_data.get("password")
-        user = models.User.objects.create_user(email, email, password)
-        user.first_name = first_name
-        user.last_name = last_name
+        user.username = email
+        user.nickname = nickname
+        user.set_password(password)
         user.save()
