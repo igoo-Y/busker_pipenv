@@ -1,10 +1,16 @@
 from django.http import request
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import FormView
 from django.urls import reverse_lazy
 from django.urls.base import reverse
 from django.contrib.auth import authenticate, login, logout
 from . import forms
+from users import models as user_models
+
+
+def my_page(request, user_id):
+    user = get_object_or_404(user_models.User, pk=user_id)
+    return render(request, "users/my_page.html", {"user": user})
 
 
 class LoginView(FormView):
@@ -16,7 +22,11 @@ class LoginView(FormView):
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, email=email, password=password)
+        user = authenticate(
+            self.request,
+            username=email,
+            password=password,
+        )
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)

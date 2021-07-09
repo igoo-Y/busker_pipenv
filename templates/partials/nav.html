@@ -5,6 +5,9 @@
         {{user.username}}
         <a href="{% url 'users:logout' %}">Logout</a>
     </li>
+    <li>
+        <a href="{% url 'users:mypage' user.id %}">My Page</a>
+    </li>
     {% else %}
     <li>
         <a href="{% url 'users:login' %}">Login</a>

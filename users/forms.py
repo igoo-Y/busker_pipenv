@@ -36,6 +36,7 @@ class SignUpForm(forms.ModelForm):
 
     password = forms.CharField(widget=PasswordInput)
     password1 = forms.CharField(widget=PasswordInput, label="Confirm Password")
+    busker = forms.BooleanField(label="버스커(가수)입니까?")
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
