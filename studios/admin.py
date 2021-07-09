@@ -30,7 +30,6 @@ class StudioAdmin(admin.ModelAdmin):
 
     list_display = [
         "name",
-        "image",
         "studio_host",
         "count_posts",
     ]
