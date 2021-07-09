@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "broadcasts.apps.BroadcastsConfig",
+    "studios.apps.StudiosConfig",
 ]
 
 MIDDLEWARE = [
