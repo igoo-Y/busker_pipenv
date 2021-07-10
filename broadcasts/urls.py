@@ -3,4 +3,7 @@ from . import views
 
 app_name = "broadcasts"
 
-urlpatterns = [path("", views.home, name="home")]
+urlpatterns = [
+    path("", views.home, name="home"),
+    path("main", views.main_view, name="main"),
+]

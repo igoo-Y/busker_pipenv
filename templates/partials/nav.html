@@ -2,7 +2,7 @@
 <ul>
     {% if user.is_authenticated %}
     <li>
-        {{user.username}}
+        {{user.nickname}}
         <a href="{% url 'users:logout' %}">Logout</a>
     </li>
     <li>
