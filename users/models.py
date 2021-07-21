@@ -26,7 +26,7 @@ class User(AbstractUser):
     CURRENCY_USD = "USD"
     CURRENCY_CHOICES = [(CURRENCY_KRW, "KRW"), (CURRENCY_USD, "USD")]
 
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True)
     nickname = models.CharField(max_length=120, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     gender = models.CharField(

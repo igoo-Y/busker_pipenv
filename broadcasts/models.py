@@ -43,7 +43,7 @@ class Broadcast(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=120, blank=True, null=True)
     desc = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(upload_to="broadcast_images", blank=True, null=True)
     on_air = models.BooleanField(default=False)
     country = CountryField(blank_label="(select country)", default="kr")
     genre = models.ManyToManyField("Genre", blank=True)
