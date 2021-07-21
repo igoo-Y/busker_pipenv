@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_title %}{{broadcast.name}}{% endblock page_title %}
+
+{% block content %}
+    <form action="{% url 'broadcasts:create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">방송 채널 만들기</button>
+    </form>
+
+{% endblock %}

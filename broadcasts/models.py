@@ -50,7 +50,7 @@ class Broadcast(core_models.TimeStampedModel):
     picture_quality = models.ForeignKey(
         "PictureQuality", on_delete=models.SET_NULL, null=True, blank=True
     )
-    broadcast_host = models.ForeignKey(
+    host = models.ForeignKey(
         user_models.User,
         related_name="broadcasts",
         on_delete=models.CASCADE,

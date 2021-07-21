@@ -1,7 +1,8 @@
-import broadcasts
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import CreateView
-from . import models
+from django.http import request
+from django.shortcuts import redirect, render
+from django.urls import reverse
+from django.views.generic import CreateView, DetailView
+from . import models, forms
 
 
 def home(request):
@@ -14,20 +15,19 @@ def main_view(request):
     return render(request, "broadcasts/main.html", context=context)
 
 
-def broadcast_detail(request, pk):
-    broadcast = get_object_or_404(models.Broadcast, pk=pk)
-    return render(request, "broadcasts/detail.html", {"broadcast": broadcast})
+class BroadcastDetail(DetailView):
+
+    model = models.Broadcast
 
 
 class CreateBroadcastView(CreateView):
 
-    model = models.Broadcast
-    fields = (
-        "name",
-        "desc",
-        "image",
-        "on_air",
-        "country",
-        "genre",
-        "picture_quality",
-    )
+    template_name = "broadcasts/broadcast_create.html"
+    form_class = forms.CreateBroadcastForm
+
+    def form_valid(self, form):
+        broadcast = form.save()
+        broadcast.host = self.request.user
+        broadcast.save()
+        form.save_m2m()
+        return redirect(reverse("broadcasts:detail", kwargs={"pk": broadcast.pk}))
