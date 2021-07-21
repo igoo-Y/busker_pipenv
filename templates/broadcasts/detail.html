@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_title %}{{broadcast.name}}{% endblock page_title %}
+
+{% block content %}
+
+<h1>Video</h1>
+<h1>CHAT</h1>
+
+<span>{{broadcast.desc}}</span>
+<span>
+    {{broadcast.name}} | {{broadcast.broadcast_host}}
+</span>
+
+{% endblock %}

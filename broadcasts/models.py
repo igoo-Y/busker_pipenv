@@ -23,12 +23,18 @@ class Genre(AbstractItem):
 
     pass
 
+    class Meta:
+        verbose_name = "Genre"
+
 
 class PictureQuality(AbstractItem):
 
     """Picture Quality Model Definition"""
 
     pass
+
+    class Meta:
+        verbose_name = "Picture Quality"
 
 
 class Broadcast(core_models.TimeStampedModel):

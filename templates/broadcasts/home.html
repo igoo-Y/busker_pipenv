@@ -6,4 +6,8 @@
 
 <h1>Home</h1>
 
+{% for broadcast in broadcasts %}
+    <a href="{% url 'broadcasts:detail' broadcast.pk %}">{{broadcast.name}}</a>
+{% endfor %}
+
 {% endblock %}

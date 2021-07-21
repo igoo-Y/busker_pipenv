@@ -6,7 +6,10 @@
         <a href="{% url 'users:logout' %}">Logout</a>
     </li>
     <li>
-        <a href="{% url 'users:mypage' user.id %}">My Page</a>
+        <a href="{% url 'users:mypage' user.id %}">마이페이지</a>
+    </li>
+    <li>
+        <a href="{% url 'broadcasts:create' %}">방송 채널 만들기</a>
     </li>
     {% else %}
     <li>
