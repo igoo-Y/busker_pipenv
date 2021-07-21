@@ -142,3 +142,4 @@ cython_debug/
 
 # Media
 media/
+node_modules
