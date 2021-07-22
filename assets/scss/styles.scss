@@ -1,12 +1,16 @@
 @tailwind base;
 @tailwind components;
 
+.nav-link {
+    @apply font-semibold text-lg ml-8;
+}
+
 .footer-item {
-    @apply font-bold text-lg mb-1;
+    @apply font-bold text-lg mb-2;
 }
 
 .footer-link {
-    @apply font-light text-xs mb-px;
+    @apply font-light text-xs mb-2;
 }
 
 @tailwind utilities;
