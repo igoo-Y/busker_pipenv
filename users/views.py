@@ -1,16 +1,16 @@
 from django.http import request
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.urls import reverse_lazy
 from django.urls.base import reverse
 from django.contrib.auth import authenticate, login, logout
-from . import forms
-from users import models as user_models
+from . import forms, models
 
 
-def my_page(request, user_id):
-    user = get_object_or_404(user_models.User, pk=user_id)
-    return render(request, "users/my_page.html", {"user": user})
+class UserProfileView(DetailView):
+
+    model = models.User
+    context_object_name = "user_obj"
 
 
 class LoginView(FormView):

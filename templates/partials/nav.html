@@ -4,10 +4,10 @@
         {{user.nickname}}
     </li>
     <li class="nav-link">
-        <a href="{% url 'users:mypage' user.id %}">마이페이지</a>
+        <a href="{% url 'users:profile' user.id %}">마이페이지</a>
     </li>
     <li class="nav-link">
-        <a href="{% url 'broadcasts:create' %}">방송 채널 만들기</a>
+        <a href="{% url 'broadcasts:create' %}">채널 만들기</a>
     </li>
     <li class="nav-link">
         <a href="{% url 'users:logout' %}">Logout</a>

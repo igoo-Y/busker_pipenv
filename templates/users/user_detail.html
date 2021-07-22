@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block page_title %}My Page{% endblock %}
+
+{% block content %}
+
+<div class="container w-4/5 mx-auto mt-16 mb-40 flex flex-row">
+    {% include 'mixins/users/my_page_nav.html' %}
+
+    <div class="flex flex-col w-4/5">
+        <h1 class="font-bold text-2xl mb-10">내 프로필</h1>
+        <div class="flex flex-row border-b pb-14 mb-12">
+            <div class="mr-10">
+                {% include 'mixins/users/user_avatar.html' %}
+            </div>
+            <div>
+                <span class="text-3xl block mb-2">{{user.nickname}}</span>
+                <span class="text-xl block mb-6 text-gray-200">{{user.email}}</span>
+                <span class="text-xl block">{{user.bio}}</span>
+            </div>
+        </div>
+        <div>
+            이름: {{user.first_name}}
+        </div>
+        <div>
+            {% if user.broadcasts.count > 0 %}
+                {% for broadcast in user.broadcasts.all %}
+                    {{broadcast.name}}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+    
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, UpdateView
 from . import models, forms
+import broadcasts
 
 
 def home(request):
