@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="/static//css/styles.css">
 </head>
 <body>
-    <header>{% include 'partials/nav.html' %}</header>
+    <header class="container max-w-full flex items-center px-5 h-20 inset-0">
+        {% include 'partials/nav.html' %}
+    </header>
 
     {% block content %}{% endblock %}
 
-    {% include 'partials/footer.html' %}
+    <footer class="text-sm text-gray-200 bg-gray-900 w-full">
+        {% include 'partials/footer.html' %}
+    </footer>
 </body>
 </html>

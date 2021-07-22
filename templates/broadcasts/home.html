@@ -4,13 +4,15 @@
 
 {% block content %}
 
-<h1>Home</h1>
+<div class="container mx-auto">
+    <div class="bg-gray-800 -mx-8 h-50vh w-full mt-32 mb-24 rounded-2xl bg-cover bg-center" style="background-image: url();"></div>    
 
-<h2>START RANDOM LIVE</h2>
-
-{% for broadcast in broadcasts %}
-    <div style="background-image: url({{broadcast.image.url}}); width: 100px; height: 100px; background-size: cover; background-position: center;"></div>
-    <a href="{% url 'broadcasts:detail' broadcast.pk %}">{{broadcast.name}}</a>
-{% endfor %}
+    <h2>START RANDOM LIVE</h2>
+    
+    {% for broadcast in broadcasts %}
+        <div style="background-image: url({{broadcast.image.url}}); width: 100px; height: 100px; background-size: cover; background-position: center;"></div>
+        <a href="{% url 'broadcasts:detail' broadcast.pk %}">{{broadcast.name}}</a>
+    {% endfor %}
+</div>
 
 {% endblock %}
