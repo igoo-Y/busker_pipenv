@@ -66,6 +66,8 @@ class UpdateProfileView(UpdateView):
     model = models.User
     template_name = "users/update_profile.html"
     fields = (
+        "first_name",
+        "last_name",
         "avatar",
         "nickname",
         "bio",
@@ -76,6 +78,11 @@ class UpdateProfileView(UpdateView):
         "currency",
         "busker",
     )
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields["first_name"].widget.attrs = {"placeholder": "이름"}
+        return form
 
     def get_object(self, queryset=None):
         return self.request.user

@@ -21,4 +21,10 @@
     @apply mb-2;
 }
 
+input,
+textarea,
+select {
+    @apply w-full py-2;
+}
+
 @tailwind utilities;
