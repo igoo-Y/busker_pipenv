@@ -13,4 +13,12 @@
     @apply font-light text-xs mb-2;
 }
 
+.mypage-nav-item {
+    @apply font-bold text-lg mb-2;
+}
+
+.mypage-nav-link {
+    @apply mb-2;
+}
+
 @tailwind utilities;
