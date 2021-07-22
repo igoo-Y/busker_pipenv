@@ -1,7 +1,7 @@
 from django.http import request
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 from . import models, forms
 
 
@@ -31,3 +31,8 @@ class CreateBroadcastView(CreateView):
         broadcast.save()
         form.save_m2m()
         return redirect(reverse("broadcasts:detail", kwargs={"pk": broadcast.pk}))
+
+
+class EditBroadcastView(UpdateView):
+
+    template_name = "broadcasts/broadcast_edit.html"

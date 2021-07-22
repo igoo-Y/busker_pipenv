@@ -19,3 +19,7 @@ class CreateBroadcastForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         broadcast = super().save(commit=False)
         return broadcast
+
+
+class UpdateBroadcastForm(forms.Form):
+    pass
