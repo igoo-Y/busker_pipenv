@@ -5,16 +5,23 @@
 {% block content %}
 
 <div class="container mx-auto">
-    <div class="w-full h-75vh bg-busker-navy mt-12 bg-cover bg-center flex justify-center items-center" style="background-image: url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&);">
-        <h1 class="text-white font-bold text-5xl">Anyone Can Sing, Anywhere</h1>
-    </div>
+    <div class="w-full h-75vh bg-busker-navy mt-12 bg-cover bg-center flex flex-col justify-center items-center mb-36" style="background-image: url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&);">
+        <h1 class="text-white font-bold text-5xl mb-32">Anyone Can Sing, Anywhere</h1>
+        <i class="fas fa-play text-7xl mb-5 hover:opacity-80"></i>
+        <span class="text-white text-3xl">START RANDOM LIVE</span>
+    </div>    
 
-    <h1>START RANDOM LIVE</h1>
-    
+    <div class="flex justify-center">
+        <span class="text-2xl border-b-2 py-2 font-bold">Genres</span>
+    </div>
     {% for broadcast in broadcasts %}
         <div style="background-image: url({{broadcast.image.url}}); width: 100px; height: 100px; background-size: cover; background-position: center;"></div>
         <a href="{% url 'broadcasts:detail' broadcast.pk %}">{{broadcast.name}}</a>
     {% endfor %}
+
+    <div class="flex justify-center">
+        <span class="text-2xl border-b-2 py-2 font-bold">Nations</span>
+    </div>
 </div>
 
 {% endblock %}
