@@ -4,13 +4,8 @@ from django.views.generic import FormView, DetailView
 from django.urls import reverse_lazy
 from django.urls.base import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic.edit import UpdateView
 from . import forms, models
-
-
-class UserProfileView(DetailView):
-
-    model = models.User
-    context_object_name = "user_obj"
 
 
 class LoginView(FormView):
@@ -58,3 +53,29 @@ class SignUpView(FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
+
+
+class UserProfileView(DetailView):
+
+    model = models.User
+    context_object_name = "user_obj"
+
+
+class UpdateProfileView(UpdateView):
+
+    model = models.User
+    template_name = "users/update_profile.html"
+    fields = (
+        "avatar",
+        "nickname",
+        "bio",
+        "gender",
+        "birthdate",
+        "phone",
+        "language",
+        "currency",
+        "busker",
+    )
+
+    def get_object(self, queryset=None):
+        return self.request.user

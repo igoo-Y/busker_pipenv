@@ -13,8 +13,11 @@
             <div class="mr-10">
                 {% include 'mixins/users/user_avatar.html' %}
             </div>
-            <div>
-                <span class="text-3xl block mb-2">{{user.nickname}}</span>
+            <div class="w-full">
+                <div class="flex flex-row items-center justify-between">
+                    <span class="text-3xl block mb-2">{{user.nickname}}</span>
+                    <a href="#" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">프로필 수정하기</a>
+                </div>
                 <span class="text-xl block mb-6 text-gray-200">{{user.email}}</span>
                 <span class="text-xl block">{{user.bio}}</span>
             </div>

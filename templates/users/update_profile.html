@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page_title %}회원정보 수정{% endblock %}
+
+{% block content %}
+
+    {% include 'mixins/auth/auth_form.html' with form=form cta="수정하기" %}
+
+{% endblock %}

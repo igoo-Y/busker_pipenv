@@ -5,7 +5,7 @@
             <a href="#">회원정보 관리</a>
         </li>
         <li class="mypage-nav-link">
-            <a href="#">내 프로필</a>
+            <a href="{% url 'users:profile' user.pk %}">내 프로필</a>
         </li>
         <li class="mypage-nav-link">
             <a href="#">프로필 수정</a>
