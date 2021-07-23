@@ -4,6 +4,7 @@ from django.views.generic import FormView, DetailView
 from django.urls import reverse_lazy
 from django.urls.base import reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import PasswordChangeView
 from django.views.generic.edit import UpdateView
 from . import forms, models
 
@@ -91,3 +92,11 @@ class UpdateProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+
+class UpdatePassword(PasswordChangeView):
+
+    template_name = "users/update_password.html"
+
+    def get_success_url(self):
+        return self.request.user.get_absolute_url()

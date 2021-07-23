@@ -18,7 +18,7 @@
                     <span class="text-3xl block mb-2">{{user_obj.nickname}}</span>
                     <div>
                         <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
-                        <a href="#" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
+                        <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
                     </div>
                 </div>
                 <span class="text-xl block mb-6 text-gray-200">{{user_obj.email}}</span>
