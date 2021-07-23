@@ -82,6 +82,11 @@ class UpdateProfileView(UpdateView):
     def get_form(self, form_class=None):
         form = super().get_form(form_class=form_class)
         form.fields["first_name"].widget.attrs = {"placeholder": "이름"}
+        form.fields["last_name"].widget.attrs = {"placeholder": "성"}
+        form.fields["nickname"].widget.attrs = {"placeholder": "닉네임"}
+        form.fields["bio"].widget.attrs = {"placeholder": "당신에 대해 알려주세요!"}
+        form.fields["birthdate"].widget.attrs = {"placeholder": "생년월일 ex)2000-01-01"}
+        form.fields["phone"].widget.attrs = {"placeholder": "연락처 ex)010-0000-0000"}
         return form
 
     def get_object(self, queryset=None):
