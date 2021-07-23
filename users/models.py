@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.urls import reverse
+from django.urls.base import reverse
 
 
 class User(AbstractUser):
@@ -43,5 +43,5 @@ class User(AbstractUser):
     )
     busker = models.BooleanField(default=False, blank=True, null=True)
 
-    def get_absoulte_url(self):
-        return reverse("users:profile", {"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("users:profile", kwargs={"pk": self.pk})

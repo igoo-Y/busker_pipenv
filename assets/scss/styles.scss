@@ -22,9 +22,10 @@
 }
 
 input,
+text,
 textarea,
 select {
-    @apply w-full py-2;
+    @apply w-full py-2 mb-2 text-gray-900 rounded-lg border-2 bg-gray-100 focus:border-yellow-400 focus:outline-none;
 }
 
 @tailwind utilities;

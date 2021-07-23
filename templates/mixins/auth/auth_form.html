@@ -1,4 +1,4 @@
-<form method="POST" class="w-full" enctype="multipart/form-data">
+<form method="POST" class="w-2/3 flex flex-col justify-center" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.non_field_errors %}
@@ -11,5 +11,5 @@
         {% include 'mixins/auth/form_input.html' with field=field %}
     {% endfor %}
     
-    <button class="btn bg-red-400 text-white">{{cta}}</button>
+    <button class="py-2 rounded-lg font-bold mt-5 bg-yellow-400 text-busker-navy">{{cta}}</button>
 <form>
