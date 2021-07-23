@@ -28,4 +28,8 @@ select {
     @apply w-full py-2 px-2 mt-1 mb-3 text-gray-900 rounded-lg border-2 bg-gray-100 focus:border-yellow-400 focus:outline-none;
 }
 
+.btn {
+    @apply py-2 rounded-lg font-bold mt-5 bg-yellow-400 text-busker-navy;
+}
+
 @tailwind utilities;

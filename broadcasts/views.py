@@ -19,6 +19,7 @@ def main_view(request):
 class BroadcastDetail(DetailView):
 
     model = models.Broadcast
+    template_name = "broadcasts/broadcast_detail.html"
 
 
 class CreateBroadcastView(CreateView):
