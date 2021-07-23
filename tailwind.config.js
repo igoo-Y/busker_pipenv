@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'busker-navy': '#1D1D43',
+        'busker-light-blue': '#7381FF',
       },
       spacing: {
         "25vh": "25vh",
