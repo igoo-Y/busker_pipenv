@@ -26,7 +26,7 @@ class BroadcastsAdmin(admin.ModelAdmin):
 
     list_display = [
         "name",
-        "broadcast_host",
+        "host",
         "country",
         "picture_quality",
         "on_air",

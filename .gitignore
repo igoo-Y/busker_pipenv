@@ -139,3 +139,7 @@ cython_debug/
 
 # Mac
 .DS_Store
+
+# Media
+media/
+node_modules
