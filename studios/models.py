@@ -47,7 +47,7 @@ class Studio(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=160, blank=True, null=True)
     desc = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(upload_to="studio_images", blank=True, null=True)
     studio_host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
 
     def __str__(self):
