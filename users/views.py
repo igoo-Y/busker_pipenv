@@ -1,4 +1,5 @@
 import os
+import requests
 from django.http import request
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import FormView, DetailView
@@ -118,6 +119,27 @@ class KakaoException(Exception):
 def kakao_callback(request):
     try:
         code = request.GET.get("code")
-        
-    except:
-        pass
+        client_id = os.environ.get("KAKAO_KEY")
+        redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
+        token_request = requests.post(
+            f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={redirect_uri}&code={code}"
+        )
+        token_json = token_request.json()
+        error = token_json.get("error", None)
+        if error is not None:
+            raise KakaoException()
+        access_token = token_json.get("access_token")
+        profile_request = requests.get(
+            "https://kapi.kakao.com/v2/user/me",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        profile_json = profile_request.json()
+        kakao_account = profile_json.get("kakao_account")
+        email = kakao_account.get("email")
+        if email is None:
+            raise KakaoException()
+        properties = profile_json.get("properties")
+        profile_image = properties.get("profile_image")
+        print(profile_image)
+    except KakaoException:
+        return redirect(reverse("users:login"))
