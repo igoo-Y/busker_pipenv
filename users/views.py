@@ -1,3 +1,4 @@
+import os
 from django.http import request
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import FormView, DetailView
@@ -100,3 +101,23 @@ class UpdatePassword(PasswordChangeView):
 
     def get_success_url(self):
         return self.request.user.get_absolute_url()
+
+
+def kakao_login(request):
+    client_id = os.environ.get("KAKAO_KEY")
+    redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
+    return redirect(
+        f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
+    )
+
+
+class KakaoException(Exception):
+    pass
+
+
+def kakao_callback(request):
+    try:
+        code = request.GET.get("code")
+        
+    except:
+        pass

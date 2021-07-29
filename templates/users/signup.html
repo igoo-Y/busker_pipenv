@@ -13,35 +13,7 @@
             <button class="bg-blue-500 hover:bg-blue-700 font-bold text-white w-24 min-w-full pt-2 pb-2 border border-blue-700 rounded mt-5" type="submit">회원가입</button>
             </form>
             
-            <section class="flex flex-col items-center justify-center space-y-4 mb-20">
-                <div>
-                    <ul class="mt-5 flex items-center justify-around space-x-5">
-                        <a href="#">
-                            <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
-                                <i class="fab fa-google"></i>
-                            </li>
-                        </a>
-
-                        <a href="#">
-                            <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
-                                <i class="fab fa-facebook-f"></i>
-                            </li>
-                        </a>
-
-                        <a href="#">
-                            <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
-                                <i class="fab fa-instagram"></i>
-                            </li>
-                        </a>
-
-                        <a href="#">
-                            <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
-                                <i class="fab fa-kickstarter-k"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            </section>
+            {% include 'partials/social_login.html' %}
         </div>
     </div>
 {% endblock %}
