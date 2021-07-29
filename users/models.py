@@ -36,7 +36,7 @@ class User(AbstractUser):
 
     avatar = models.ImageField(upload_to="avatars", blank=True)
     nickname = models.CharField(max_length=120, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True, default="소개를 입력해주세요!")
     gender = models.CharField(
         max_length=20, choices=GENDER_CHOICES, blank=True, null=True
     )

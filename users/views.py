@@ -8,6 +8,7 @@ from django.urls.base import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic.edit import UpdateView
+from django.core.files.base import ContentFile
 from . import forms, models
 
 
@@ -139,7 +140,28 @@ def kakao_callback(request):
         if email is None:
             raise KakaoException()
         properties = profile_json.get("properties")
+        nickname = properties.get("nickname")
         profile_image = properties.get("profile_image")
-        print(profile_image)
+        try:
+            user = models.User.objects.get(email=email)
+            if user.login_method != models.User.LOGIN_KAKAO:
+                raise KakaoException()
+        except models.User.DoesNotExist:
+            user = models.User.objects.create(
+                email=email,
+                username=email,
+                nickname=nickname,
+                first_name=nickname,
+                login_method=models.User.LOGIN_KAKAO,
+            )
+            user.set_unusable_password()
+            user.save()
+            if profile_image is not None:
+                photo_request = requests.get(profile_image)
+                user.avatar.save(
+                    f"{nickname}_avatar", ContentFile(photo_request.content)
+                )
+        login(request, user)
+        return redirect(reverse("core:home"))
     except KakaoException:
         return redirect(reverse("users:login"))
