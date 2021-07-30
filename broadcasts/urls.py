@@ -6,7 +6,4 @@ app_name = "broadcasts"
 urlpatterns = [
     path("", views.home, name="home"),
     path("main", views.main_view, name="main"),
-    path("<int:pk>/", views.BroadcastDetail.as_view(), name="detail"),
-    path("create/", views.CreateBroadcastView.as_view(), name="create"),
-    path("update/<int:pk>/", views.EditBroadcastView.as_view(), name="edit"),
 ]

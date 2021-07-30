@@ -4,67 +4,6 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto">
-    <div class="w-full h-75vh rounded-md bg-busker-navy mt-12 bg-cover bg-center flex flex-col justify-center items-center mb-36" style="background-image: url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&);">
-        <h1 class="text-white font-bold text-5xl mb-32">Anyone Can Sing, Anywhere</h1>
-        <i class="fas fa-play text-7xl mb-5 hover:opacity-80"></i>
-        <span class="text-white text-3xl">START RANDOM LIVE</span>
-    </div>    
-
-    <div class="flex justify-center mb-10">
-        <span class="text-2xl border-b-2 py-2 font-bold">On Air List</span>
-    </div>
-    
-    
-    <div class="flex flex-row flex-wrap mb-24">
-        {% for broadcast in broadcasts %}
-            {% if broadcast.on_air == True %}
-            <div class="w-1/4 pb-2 px-2">
-                <a href="{% url 'broadcasts:detail' broadcast.pk %}">
-                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
-                        <div class="w-full h-64 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
-                            <div class="w-full flex flex-col">
-                                <span class="text-lg mb-px">{{broadcast.name}}</span>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-xs mb-px">{{broadcast.host.nickname}}</span>
-                                    <div class="m-0 p-0 flex items-center">
-                                    {% for g in broadcast.genres.all %}                                
-                                        <span class="text-xs mb-px ml-2">{{g}}</span>                                                                         
-                                    {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-        
-    <div class="flex justify-center mb-10">
-        <span class="text-2xl border-b-2 py-2 font-bold">Genres</span>
-    </div>
-
-    <div class="flex flex-row flex-wrap mb-24">
-        <div class="w-1/4 pb-2 px-2">
-            <a href="#">
-                <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url(https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);"></div>
-            </a>
-        </div>
-    </div>
-
-    <div class="flex justify-center mb-10">
-        <span class="text-2xl border-b-2 py-2 font-bold">Nations</span>
-    </div>
-
-    <div class="flex flex-row flex-wrap mb-48">
-        <div class="w-1/4 pb-2 px-2">
-            <a href="#">
-                <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url(https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);"></div>
-            </a>
-        </div>
-    </div>
-</div>
+<h1>Home</h1>
 
 {% endblock %}

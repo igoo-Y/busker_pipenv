@@ -29,8 +29,9 @@
             </div>
 
             <div>
-                <input id="msg">
-                <button id="btn-send-msg">Send Message</button>
+                <textarea id="chat-log" cols="90" rows="20"></textarea><br/>
+                <input id="msg" type="text" size="100">
+                <input id="btn-send-msg"type="button" value="Send Message"/>
                 <button id="btn-share-screen">Share Screen</button>
             </div>
         </div>
@@ -39,5 +40,36 @@
 
 
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script>
+    var chatSocket = new WebSocket( 'ws://' +window.location.host + '/broadcasts/main' );
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        document.querySelector('#chat-log').value += (message + '\n');
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#msg').focus();
+    document.querySelector('#msg').onkeyup = function(e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#btn-send-msg').click();
+        }
+    };
+
+    document.querySelector('#btn-send-msg').onclick = function(e) {
+        var messageInputDom = document.querySelector('#msg');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+</script>
+
 </body>
 </html>
