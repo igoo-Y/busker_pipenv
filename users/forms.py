@@ -19,9 +19,9 @@ class LoginForm(forms.Form):
             if user.check_password(password):
                 return self.cleaned_data
             else:
-                self.add_error("password", forms.ValidationError("패스워드를 확인해주세요."))
+                self.add_error("password", forms.ValidationError("Password is wrong"))
         except models.User.DoesNotExist:
-            self.add_error("email", forms.ValidationError("해당 유저가 존재하지 않습니다."))
+            self.add_error("email", forms.ValidationError("User does not exist"))
 
 
 class SignUpForm(forms.ModelForm):
