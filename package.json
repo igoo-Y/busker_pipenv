@@ -1,5 +1,5 @@
 {
-  "name": "busker",
+  "name": "busker_pipenv",
   "version": "1.0.0",
   "description": "",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "git+https://github.com/igoo-Y/busker_pipenv.git"
   },
   "scripts": {
-    "css": "gulp"
+    "css":"gulp"
   },
   "homepage": "https://github.com/igoo-Y/busker_pipenv#readme",
   "devDependencies": {
@@ -18,6 +18,6 @@
     "gulp-postcss": "^9.0.0",
     "gulp-sass": "^5.0.0",
     "node-sass": "^6.0.1",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.6"
   }
 }
