@@ -14,26 +14,31 @@
                 {% include 'mixins/users/user_avatar.html' %}
             </div>
             <div class="w-full">
-                <div class="flex flex-row items-center justify-between">
-                    <span class="text-3xl block mb-2">{{user.nickname}}</span>
-                    <div>
-                        <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
-                        <a href="#" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
+                <div class="flex flex-row items-center mb-3">
+                    <div class="flex flex-row items-center">
+                        <span class="text-3xl mr-3">{{user_obj.nickname}}</span>
+                        {% if user_obj.busker %}
+                            <span class="bg-indigo-600 py-1 px-3 text-sm rounded-xl">BUSKER</span>
+                        {% endif %}
                     </div>
                 </div>
-                <span class="text-xl block mb-6 text-gray-200">{{user.email}}</span>
-                <span class="text-xl block">{{user.bio}}</span>
+                <span class="text-xl block mb-6 text-gray-200">{{user_obj.email}}</span>
+                <span class="text-xl block">{{user_obj.bio}}</span>
             </div>
         </div>
         <div>
-            이름: {{user.first_name}}
+            이름: {{user_obj.first_name}}
         </div>
-        <div>
+        <div class="mb-32">
             {% if user.broadcasts.count > 0 %}
                 {% for broadcast in user.broadcasts.all %}
                     {{broadcast.name}}
                 {% endfor %}
             {% endif %}
+        </div>
+        <div class="flex justify-end">
+            <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
+            <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
         </div>
     </div>
 </div>

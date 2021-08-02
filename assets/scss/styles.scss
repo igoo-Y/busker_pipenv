@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
+
+.nav-link {
+    @apply font-semibold text-sm ml-8 hover:text-yellow-400;
+}
+
+.footer-item {
+    @apply font-bold text-lg mb-2;
+}
+
+.footer-link {
+    @apply font-light text-xs mb-2;
+}
+
+.mypage-nav-item {
+    @apply font-bold text-lg mb-2;
+}
+
+.mypage-nav-link {
+    @apply mb-2;
+}
+
+input,
+text,
+textarea,
+select {
+    @apply w-full py-2 px-2 mt-1 mb-3 text-gray-900 rounded-lg border-2 bg-gray-100 focus:border-yellow-400 focus:outline-none;
+}
+
+.btn {
+    @apply py-2 rounded-lg font-bold mt-5 bg-yellow-400 text-busker-navy;
+}
+
 @tailwind utilities;
