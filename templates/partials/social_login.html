@@ -1,0 +1,27 @@
+<section class="flex flex-col items-center justify-center space-y-4 mb-20">
+    <div>
+        <ul class="mt-5 flex items-center justify-around space-x-5">
+            <a href="#">
+                <li class="shadow w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white bg-center bg-cover" style="background-image: url(https://blog.kakaocdn.net/dn/eKBsMH/btqPgGk7Fxx/Ro2eTSkL0h0YzcFdHEejl0/img.png);">
+                </li>
+            </a>
+
+            <!-- <a href="#">
+                <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
+                    <i class="fab fa-facebook-f"></i>
+                </li>
+            </a>
+
+            <a href="#">
+                <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
+                    <i class="fab fa-instagram"></i>
+                </li>
+            </a> -->
+
+            <a href="{% url 'users:kakao_login' %}">
+                <li class="shadow w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white bg-cover bg-center" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/f2/Kakao_logo.jpg);">
+                </li>
+            </a>
+        </ul>
+    </div>
+</section>
