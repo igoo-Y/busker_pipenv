@@ -10,6 +10,7 @@ pillow = "*"
 django-countries = "*"
 django-dotenv = "*"
 requests = "*"
+django-allauth = "*"
 
 [dev-packages]
 black = "*"

@@ -1,7 +1,10 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
 <section class="flex flex-col items-center justify-center space-y-4 mb-20">
     <div>
         <ul class="mt-5 flex items-center justify-around space-x-5">
-            <a href="#">
+            <a href="{% provider_login_url 'google' %}"> 
                 <li class="shadow w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white bg-center bg-cover" style="background-image: url(https://blog.kakaocdn.net/dn/eKBsMH/btqPgGk7Fxx/Ro2eTSkL0h0YzcFdHEejl0/img.png);">
                 </li>
             </a>
