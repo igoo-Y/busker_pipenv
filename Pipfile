@@ -8,6 +8,9 @@ django = "==3.2.5"
 channels = "*"
 pillow = "*"
 django-countries = "*"
+django-dotenv = "*"
+requests = "*"
+django-allauth = "*"
 
 [dev-packages]
 black = "*"

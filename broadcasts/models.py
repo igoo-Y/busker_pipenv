@@ -47,7 +47,7 @@ class Broadcast(core_models.TimeStampedModel):
     image = models.ImageField(upload_to="broadcast_images", blank=True, null=True)
     on_air = models.BooleanField(default=False)
     country = CountryField(blank_label="(select country)", default="kr")
-    genre = models.ManyToManyField("Genre", blank=True)
+    genres = models.ManyToManyField("Genre", blank=True)
     picture_quality = models.ForeignKey(
         "PictureQuality", on_delete=models.SET_NULL, null=True, blank=True
     )
@@ -64,3 +64,7 @@ class Broadcast(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def get_on_airs(self):
+        on_airs = Broadcast.objects.filter(on_air=True)
+        return on_airs

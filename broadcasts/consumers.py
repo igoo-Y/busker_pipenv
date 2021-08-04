@@ -1,5 +1,8 @@
+# consumers.py 는 사용자가 서버에 연결하기 위한 views.py 와 같음. 웹소켓을 사용하여 consumers.py 에 연결됨.
+# channels 가 websocket 연결을 받아들이면 root routing configuration 을 통해 consumers.py 를 찾은 후에 이벤트를 처리하기 위한 함수를 호출함.
+
 import json
-from channels.generic.websocket import AsyncJsonWebsocketConsumer
+from channels.generic.websocket import AsyncJsonWebsocketConsumer  #
 from django.dispatch.dispatcher import receiver
 
 
