@@ -14,13 +14,7 @@
                 </li>
             </a>
 
-            <!-- <a href="#">
-                <li class="border border-blue-700 w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white">
-                    <i class="fab fa-instagram"></i>
-                </li>
-            </a> -->
-
-            <a href="{% url 'users:kakao_login' %}">
+            <a href="{% provider_login_url 'kakao'%}">
                 <li class="shadow w-10 h-10 rounded flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white bg-cover bg-center" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/f/f2/Kakao_logo.jpg);">
                 </li>
             </a>
