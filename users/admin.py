@@ -37,4 +37,5 @@ class CustomUserAdmin(UserAdmin):
         "language",
         "currency",
         "busker",
+        "login_method",
     )

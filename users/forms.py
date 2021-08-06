@@ -8,8 +8,8 @@ from . import models
 
 class LoginForm(forms.Form):
 
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(label="이메일")
+    password = forms.CharField(widget=forms.PasswordInput, label="패스워드")
 
     def clean(self):
         email = self.cleaned_data.get("email")
@@ -34,8 +34,12 @@ class SignUpForm(forms.ModelForm):
             "last_name",
         ]
 
-    password = forms.CharField(widget=PasswordInput)
-    password1 = forms.CharField(widget=PasswordInput, label="Confirm Password")
+    email = forms.EmailField(label="이메일")
+    nickname = forms.CharField(label="닉네임")
+    first_name = forms.CharField(label="이름")
+    last_name = forms.CharField(label="성")
+    password = forms.CharField(widget=PasswordInput, label="패스워드")
+    password1 = forms.CharField(widget=PasswordInput, label="패스워드 확인")
     busker = forms.BooleanField(label="버스커(가수)입니까?")
 
     def clean_email(self):
