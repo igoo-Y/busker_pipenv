@@ -2,8 +2,9 @@
 
 ### installation
 * pipenv
-* django-channels
+* channels
 * pillow
 * requests
 * django-dotenv
 * tailwindCSS
+* allauth

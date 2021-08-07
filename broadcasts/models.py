@@ -3,6 +3,7 @@ from django.urls import reverse
 from core import models as core_models
 from users import models as user_models
 from django_countries.fields import CountryField
+from random import randint, random
 
 
 class AbstractItem(core_models.TimeStampedModel):
@@ -18,16 +19,6 @@ class AbstractItem(core_models.TimeStampedModel):
         return self.name
 
 
-class Genre(AbstractItem):
-
-    """Genre Model Definition"""
-
-    pass
-
-    class Meta:
-        verbose_name = "Genre"
-
-
 class PictureQuality(AbstractItem):
 
     """Picture Quality Model Definition"""
@@ -36,6 +27,17 @@ class PictureQuality(AbstractItem):
 
     class Meta:
         verbose_name = "Picture Quality"
+
+
+class Genre(core_models.TimeStampedModel):
+
+    """Genre Model Definition"""
+
+    name = models.CharField(max_length=80)
+    image = models.ImageField(upload_to="genre_images", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Genre"
 
 
 class Broadcast(core_models.TimeStampedModel):

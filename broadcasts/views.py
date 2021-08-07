@@ -4,11 +4,22 @@ from django.urls import reverse
 from django.views.generic import CreateView, DetailView, UpdateView
 from . import models, forms
 import broadcasts
+import random
 
 
 def home(request):
     broadcasts = models.Broadcast.objects.all()
     return render(request, "broadcasts/home.html", {"broadcasts": broadcasts})
+
+
+def get_random_on_air(request):
+    max_id = models.Broadcast.objects.filter(on_air=True).aggregate(max_id=Max("id"))[
+        "max_id"
+    ]
+    pk = random.randint(1, max_id)
+    random_on_air = models.Broadcast.objects.get(pk=pk)
+    print(random_on_air)
+    return render(request, "broadcats/home.html", {"random_on_air": random_on_air})
 
 
 def main_view(request):
