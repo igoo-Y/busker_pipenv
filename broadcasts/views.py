@@ -2,6 +2,7 @@ from django.http import request
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, UpdateView
+from django.http import Http404
 from . import models, forms
 import broadcasts
 import random
@@ -10,16 +11,6 @@ import random
 def home(request):
     broadcasts = models.Broadcast.objects.all()
     return render(request, "broadcasts/home.html", {"broadcasts": broadcasts})
-
-
-def get_random_on_air(request):
-    max_id = models.Broadcast.objects.filter(on_air=True).aggregate(max_id=Max("id"))[
-        "max_id"
-    ]
-    pk = random.randint(1, max_id)
-    random_on_air = models.Broadcast.objects.get(pk=pk)
-    print(random_on_air)
-    return render(request, "broadcats/home.html", {"random_on_air": random_on_air})
 
 
 def main_view(request):
@@ -31,10 +22,19 @@ class BroadcastDetail(DetailView):
 
     model = models.Broadcast
     template_name = "broadcasts/broadcast_detail.html"
+    context_object_name = "broadcast"
 
     def get_queryset(self):
         on_air_list = models.Broadcast.objects.filter(on_air=True)
         return on_air_list
+
+    def get_random_pk(self):
+        random_broadcast = (
+            models.Broadcast.objects.filter(on_air=True).order_by("?").first()
+        )
+        random_pk = random_broadcast.pk
+        print(random_pk)
+        return random_pk
 
 
 class CreateBroadcastView(CreateView):
@@ -50,6 +50,23 @@ class CreateBroadcastView(CreateView):
         return redirect(reverse("broadcasts:detail", kwargs={"pk": broadcast.pk}))
 
 
-class EditBroadcastView(UpdateView):
+class UpdateBroadcastView(UpdateView):
 
-    template_name = "broadcasts/broadcast_edit.html"
+    model = models.Broadcast
+    template_name = "broadcasts/broadcast_update.html"
+    fields = (
+        "name",
+        "desc",
+        "image",
+        "on_air",
+        "country",
+        "genres",
+        "picture_quality",
+    )
+
+    def get_object(self, queryset=None):
+        broadcast = super().get_object(queryset=queryset)
+        if broadcast.host.pk != self.request.user.pk:
+            raise Http404()
+        else:
+            return broadcast
