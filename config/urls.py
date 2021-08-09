@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("users/", include("users.urls", namespace="users")),
     path("broadcasts/", include("broadcasts.urls", namespace="broadcasts")),
+    path("studios/", include("studios.urls", namespace="studios")),
     path("accounts/", include("allauth.urls")),
     # path("create_studio/", include("studios.urls")),
     path("studios/", include("studios.urls", namespace="studios")),

@@ -2,6 +2,7 @@
 # from . import models
 
 
+<<<<<<< HEAD
 # @admin.register(models.Post)
 # class PostAdmin(admin.ModelAdmin):
 
@@ -15,18 +16,47 @@
 
 # @admin.register(models.Studio)
 # class StudioAdmin(admin.ModelAdmin):
+=======
+@admin.register(models.Post)
+class PostAdmin(admin.ModelAdmin):
+>>>>>>> ingyu
 
 #     """Studio Admin Definition"""
 
+<<<<<<< HEAD
 #     list_display = [
 #         "name",
 #         "host",
 #         "count_posts",
 #     ]
+=======
+    list_display = [
+        "title",
+        "writer",
+        "studio",
+    ]
+>>>>>>> ingyu
 
 #     raw_id_fields = ("host",)
 
 #     def count_posts(self, obj):
 #         return obj.posts.count()
 
+<<<<<<< HEAD
 #     count_posts.short_description = "Number of Posts"
+=======
+    """Studio Admin Definition"""
+
+    list_display = [
+        "name",
+        "host",
+        "count_posts",
+    ]
+
+    raw_id_fields = ("host",)
+
+    def count_posts(self, obj):
+        return obj.posts.count()
+
+    count_posts.short_description = "Number of Posts"
+>>>>>>> ingyu
