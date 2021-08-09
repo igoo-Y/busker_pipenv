@@ -18,9 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("core.urls", namespace="core")),
     path("users/", include("users.urls", namespace="users")),
     path("broadcasts/", include("broadcasts.urls", namespace="broadcasts")),
+    path("accounts/", include("allauth.urls")),
+    # path("create_studio/", include("studios.urls")),
+    path("studios/", include("studios.urls", namespace="studios")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
