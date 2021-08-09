@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DetailView
-from . import forms
-=======
 from django.forms import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -54,4 +48,3 @@ class CreateStudioView(CreateView):
         studio.host = self.request.user
         studio.save()
         return redirect(reverse("studios:detail", kwargs={"pk": studio.pk}))
->>>>>>> ingyu

@@ -1,7 +1,5 @@
 from typing import Tuple
 from django.db import models
-<<<<<<< HEAD
-=======
 from django.urls import reverse
 from core import models as core_models
 import core
@@ -50,4 +48,3 @@ class Studio(core_models.TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("studios:detail", kwargs={"pk": self.pk})
->>>>>>> ingyu

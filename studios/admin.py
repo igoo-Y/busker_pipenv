@@ -1,50 +1,23 @@
-# from django.contrib import admin
-# from . import models
+from django.contrib import admin
+from . import models
 
 
-<<<<<<< HEAD
-# @admin.register(models.Post)
-# class PostAdmin(admin.ModelAdmin):
-
-#     """Post Admin Definition"""
-
-#     list_display = [
-#         "title",
-#         "writer",
-#     ]
-
-
-# @admin.register(models.Studio)
-# class StudioAdmin(admin.ModelAdmin):
-=======
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
->>>>>>> ingyu
 
-#     """Studio Admin Definition"""
+    """Studio Admin Definition"""
 
-<<<<<<< HEAD
-#     list_display = [
-#         "name",
-#         "host",
-#         "count_posts",
-#     ]
-=======
     list_display = [
         "title",
         "writer",
         "studio",
     ]
->>>>>>> ingyu
 
-#     raw_id_fields = ("host",)
+    raw_id_fields = ("host",)
 
-#     def count_posts(self, obj):
-#         return obj.posts.count()
+    def count_posts(self, obj):
+        return obj.posts.count()
 
-<<<<<<< HEAD
-#     count_posts.short_description = "Number of Posts"
-=======
     """Studio Admin Definition"""
 
     list_display = [
@@ -59,4 +32,3 @@ class PostAdmin(admin.ModelAdmin):
         return obj.posts.count()
 
     count_posts.short_description = "Number of Posts"
->>>>>>> ingyu
