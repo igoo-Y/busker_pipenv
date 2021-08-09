@@ -1,21 +1,11 @@
 from django.contrib import admin
 from . import models
 
-<<<<<<< HEAD
-"""
-@admin.register(models.PostCategory)
-class PostCategory(admin.ModelAdmin):
-
-    #Post Category Definition
-    pass
-
-=======
->>>>>>> ingyu
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
 
-    #Post Admin Definition
+    # Post Admin Definition
 
     list_display = [
         "title",
@@ -27,7 +17,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(models.Studio)
 class StudioAdmin(admin.ModelAdmin):
 
-    #Studio Admin Definition
+    # Studio Admin Definition
 
     list_display = [
         "name",
@@ -41,8 +31,3 @@ class StudioAdmin(admin.ModelAdmin):
         return obj.posts.count()
 
     count_posts.short_description = "Number of Posts"
-"""
-
-from .models import Studio
-
-admin.site.register(Studio)
