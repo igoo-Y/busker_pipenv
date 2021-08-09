@@ -19,9 +19,7 @@ class CreateBroadcastForm(forms.ModelForm):
 
     name = forms.CharField(label="채널 이름")
     desc = forms.CharField(label="채널 설명")
-    image = forms.ImageField(label="채널 썸네일")
     on_air = forms.BooleanField(label="생방송 여부")
-    picture_quality = forms.CharField(label="화질")
 
     def clean_genres(self):
         genres = self.cleaned_data["genres"]
