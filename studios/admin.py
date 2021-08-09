@@ -1,46 +1,32 @@
-from django.contrib import admin
-from . import models
-
-"""
-@admin.register(models.PostCategory)
-class PostCategory(admin.ModelAdmin):
-
-    #Post Category Definition
-    pass
+# from django.contrib import admin
+# from . import models
 
 
-@admin.register(models.Post)
-class PostAdmin(admin.ModelAdmin):
+# @admin.register(models.Post)
+# class PostAdmin(admin.ModelAdmin):
 
-    #Post Admin Definition
+#     """Post Admin Definition"""
 
-    list_display = [
-        "title",
-        "writer",
-        "p_studio",
-        "post_category",
-    ]
+#     list_display = [
+#         "title",
+#         "writer",
+#     ]
 
 
-@admin.register(models.Studio)
-class StudioAdmin(admin.ModelAdmin):
+# @admin.register(models.Studio)
+# class StudioAdmin(admin.ModelAdmin):
 
-    #Studio Admin Definition
+#     """Studio Admin Definition"""
 
-    list_display = [
-        "name",
-        "studio_host",
-        "count_posts",
-    ]
+#     list_display = [
+#         "name",
+#         "host",
+#         "count_posts",
+#     ]
 
-    raw_id_fields = ("studio_host",)
+#     raw_id_fields = ("host",)
 
-    def count_posts(self, obj):
-        return obj.posts.count()
+#     def count_posts(self, obj):
+#         return obj.posts.count()
 
-    count_posts.short_description = "Number of Posts"
-"""
-
-from .models import Studio
-
-admin.site.register(Studio)
+#     count_posts.short_description = "Number of Posts"
