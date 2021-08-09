@@ -2,14 +2,6 @@ from django.contrib import admin
 from . import models
 
 
-@admin.register(models.PostCategory)
-class PostCategory(admin.ModelAdmin):
-
-    """Post Category Definition"""
-
-    pass
-
-
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
 
@@ -18,8 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "writer",
-        "p_studio",
-        "post_category",
+        "studio",
     ]
 
 
@@ -30,11 +21,11 @@ class StudioAdmin(admin.ModelAdmin):
 
     list_display = [
         "name",
-        "studio_host",
+        "host",
         "count_posts",
     ]
 
-    raw_id_fields = ("studio_host",)
+    raw_id_fields = ("host",)
 
     def count_posts(self, obj):
         return obj.posts.count()
