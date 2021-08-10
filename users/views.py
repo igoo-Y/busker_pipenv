@@ -1,5 +1,4 @@
 import os
-from django.views.generic.base import View
 import requests
 from django.http import request
 from django.shortcuts import get_object_or_404, render, redirect
@@ -106,9 +105,9 @@ class UpdatePassword(PasswordChangeView):
         return self.request.user.get_absolute_url()
 
 
-def kakao_login(request):
-    app_rest_api_key = os.environ.get("KAKAO_KEY")
-    redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
-    return redirect(
-        f"https://kauth.kakao.com/oauth/authorize?client_id={app_rest_api_key}&redirect_uri={redirect_uri}&response_type=code"
-    )
+# def kakao_login(request):
+#     app_rest_api_key = os.environ.get("KAKAO_KEY")
+#     redirect_uri = "http://127.0.0.1:8000/users/login/kakao/callback"
+#     return redirect(
+#         f"https://kauth.kakao.com/oauth/authorize?client_id={app_rest_api_key}&redirect_uri={redirect_uri}&response_type=code"
+#     )
