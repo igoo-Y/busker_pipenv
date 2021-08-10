@@ -20,7 +20,10 @@
                 {% if broadcast.host == user %}
                     <a href="{% url 'broadcasts:update' pk=broadcast.pk %}" class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">내 채널 수정하기</a>
                 {% endif %}
-                <a href="{% url 'studios:detail' pk=broadcast.host.studio.pk %}"><span class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">스튜디오 가기</span></a>
+                <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">화질설정</span></a>
+                <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">구독</span></a>
+                <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">후원하기</span></a>
+                <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">스튜디오</span></a>
             </div>
         </div>
         <div class="border-b border-gray-200 pb-8 mb-32">

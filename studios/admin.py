@@ -10,7 +10,8 @@ class PostAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "writer",
-        "studio",
+        "p_studio",
+        "post_category",
     ]
 
 
@@ -21,11 +22,11 @@ class StudioAdmin(admin.ModelAdmin):
 
     list_display = [
         "name",
-        "host",
+        "studio_host",
         "count_posts",
     ]
 
-    raw_id_fields = ("host",)
+    raw_id_fields = ("studio_host",)
 
     def count_posts(self, obj):
         return obj.posts.count()

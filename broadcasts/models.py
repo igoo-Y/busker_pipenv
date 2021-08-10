@@ -63,11 +63,12 @@ class Broadcast(core_models.TimeStampedModel):
     picture_quality = models.ForeignKey(
         "PictureQuality", on_delete=models.SET_NULL, null=True, blank=True
     )
-    host = models.OneToOneField(
+    host = models.ForeignKey(
         user_models.User,
         related_name="broadcasts",
         on_delete=models.CASCADE,
-        primary_key=True,
+        blank=True,
+        null=True,
     )
 
     def get_absolute_url(self):
