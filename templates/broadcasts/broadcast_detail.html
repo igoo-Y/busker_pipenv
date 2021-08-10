@@ -17,27 +17,37 @@
         <div class="flex justify-between mb-1">
             <span class="font-bold text-3xl">{{broadcast.name}}</span>
             <div>
+                {% if broadcast.host == user %}
+                    <a href="{% url 'broadcasts:update' pk=broadcast.pk %}" class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">내 채널 수정하기</a>
+                {% endif %}
                 <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">화질설정</span></a>
                 <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">구독</span></a>
                 <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">후원하기</span></a>
                 <a href="#"><span class="btn bg-indigo-400 rounded-full px-3 text-sm ml-3">스튜디오</span></a>
             </div>
         </div>
-        <div class="flex items-center border-b border-gray-200 pb-16 mb-32">
-            <span class="font-semibold text-lg">{{broadcast.host.nickname}}</span>
-            <div class="border-r h-4 border-white ml-3"></div>
-            <span>
-                {% for g in broadcast.genres.all %}                                
-                    <span class="text-lg ml-3">{{g}}</span>                                                                         
-                {% endfor %}
-            </span>
+        <div class="border-b border-gray-200 pb-8 mb-32">
+            <div class="flex items-center mb-3">
+                <span class="font-semibold text-lg">{{broadcast.host.nickname}}</span>
+                <div class="border-r h-4 border-white ml-3"></div>
+                <span>
+                    {% for g in broadcast.genres.all %}                                
+                        <span class="text-lg ml-3">{{g}}</span>                                                                         
+                    {% endfor %}
+                </span>
+            </div>
+            <span class="text-lg">{{broadcast.desc}}</span>
         </div>
         
         <div class="flex flex-row flex-wrap mb-24">
             {% for on_air in broadcast.get_on_airs.all %}
                 <div class="w-1/5 pb-2 px-2">
                     <a href="{% url 'broadcasts:detail' on_air.pk %}">
-                        <div class="w-full h-56 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{on_air.image.url}});">
+                        {% if on_air.image.url %}
+                            <div class="w-full h-56 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{on_air.image.url}});">
+                        {% else %}
+                            <div class="w-full h-56 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url(/media/broadcast_images/no_image.png);">
+                        {% endif %}
                             <div class="w-full h-56 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
                                 <div class="w-full flex flex-col">
                                     <span class="text-lg mb-px overflow-hidden">{{ on_air.name }}</span>
