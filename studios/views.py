@@ -2,7 +2,12 @@ from django.forms import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.urls.base import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    UpdateView,
+    DeleteView,
+)
 from . import models, forms
 
 

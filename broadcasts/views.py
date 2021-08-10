@@ -22,19 +22,10 @@ class BroadcastDetail(DetailView):
 
     model = models.Broadcast
     template_name = "broadcasts/broadcast_detail.html"
-    context_object_name = "broadcast"
 
     def get_queryset(self):
         on_air_list = models.Broadcast.objects.filter(on_air=True)
         return on_air_list
-
-    def get_random_pk(self):
-        random_broadcast = (
-            models.Broadcast.objects.filter(on_air=True).order_by("?").first()
-        )
-        random_pk = random_broadcast.pk
-        print(random_pk)
-        return random_pk
 
 
 class CreateBroadcastView(CreateView):

@@ -21,12 +21,6 @@ class CreateBroadcastForm(forms.ModelForm):
     desc = forms.CharField(label="채널 설명")
     on_air = forms.BooleanField(label="생방송 여부")
 
-    def clean_genres(self):
-        genres = self.cleaned_data["genres"]
-        if len(genres) > 2:
-            raise forms.ValidationError("장르는 최대 2개까지 선택가능합니다.")
-        return genres
-
     def save(self, *args, **kwargs):
         broadcast = super().save(commit=False)
         return broadcast
