@@ -5,7 +5,7 @@ from . import models
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
 
-    """Post Admin Definition"""
+    # Post Admin Definition
 
     list_display = [
         "title",
@@ -18,7 +18,7 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(models.Studio)
 class StudioAdmin(admin.ModelAdmin):
 
-    """Studio Admin Definition"""
+    # Studio Admin Definition
 
     list_display = [
         "name",

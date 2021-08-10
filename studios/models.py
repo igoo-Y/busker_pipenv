@@ -25,7 +25,7 @@ class PostCategory(StudioAbstractItem):
 
 class Post(core_models.TimeStampedModel):
 
-    """Post Model Definition"""
+    # Post Model Definition
 
     title = models.CharField(max_length=200, blank=True, null=True)
     writer = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
@@ -43,7 +43,7 @@ class Post(core_models.TimeStampedModel):
 
 class Studio(core_models.TimeStampedModel):
 
-    """Studio Model Definition"""
+    # Studio Model Definition
 
     name = models.CharField(max_length=160, blank=True, null=True)
     desc = models.TextField(blank=True, null=True)

@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "broadcasts.apps.BroadcastsConfig",
-    "studios.apps.StudiosConfig",
+    "studios.apps.StudiosConfig",  # studios
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
