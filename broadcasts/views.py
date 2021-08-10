@@ -46,7 +46,6 @@ class CreateBroadcastView(CreateView):
         broadcast = form.save()
         broadcast.host = self.request.user
         broadcast.save()
-        form.save_m2m()
         return redirect(reverse("broadcasts:detail", kwargs={"pk": broadcast.pk}))
 
 

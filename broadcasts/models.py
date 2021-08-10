@@ -67,7 +67,6 @@ class Broadcast(core_models.TimeStampedModel):
         user_models.User,
         related_name="broadcasts",
         on_delete=models.CASCADE,
-        primary_key=True,
     )
 
     def get_absolute_url(self):
