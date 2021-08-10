@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{studio.host.nickname}}의 스튜디오{% endblock %}
+
+{% block content %}
+
+<div class="container w-4/5 mx-auto mt-16 mb-40 flex flex-row">
+    <!-- {% include 'mixins/users/my_page_nav.html' %} -->
+
+    <div class="flex flex-col w-4/5">
+        <h1 class="font-bold text-2xl mb-10">내 프로필</h1>
+        <div class="flex flex-row border-b pb-14 mb-12">
+            <div class="mr-10">
+                <!-- {% include 'mixins/users/user_avatar.html' %} -->
+            </div>
+            <div class="w-full">
+                <div class="flex flex-row items-center mb-3">
+                    <div class="flex flex-row items-center">
+                        <!-- <span class="text-3xl mr-3">{{user_obj.nickname}}</span>
+                        {% if user_obj.busker %}
+                            <span class="bg-indigo-600 py-1 px-3 text-sm rounded-xl">BUSKER</span>
+                        {% endif %} -->
+                    </div>
+                </div>
+                <!-- <span class="text-xl block mb-6 text-gray-200">{{user_obj.email}}</span> -->
+                <!-- <span class="text-xl block">{{user_obj.bio}}</span> -->
+            </div>
+        </div>
+        <div>
+            <!-- 이름: {{user_obj.first_name}} -->
+        </div>
+        <div class="mb-32">
+            <!-- {% if user.broadcasts.count > 0 %}
+                {% for broadcast in user.broadcasts.all %}
+                    {{broadcast.name}}
+                {% endfor %}
+            {% endif %} -->
+        </div>
+        <div class="flex justify-end">
+            <a href="#" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
+            <a href="#" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
