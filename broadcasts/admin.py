@@ -35,3 +35,5 @@ class BroadcastsAdmin(admin.ModelAdmin):
     list_filter = [
         "on_air",
     ]
+
+    raw_id_fields = ("host",)
