@@ -26,6 +26,4 @@ urlpatterns = [
     path("broadcasts/", include("broadcasts.urls", namespace="broadcasts")),
     path("studios/", include("studios.urls", namespace="studios")),
     path("accounts/", include("allauth.urls")),
-    # path("create_studio/", include("studios.urls")),
-    path("studios/", include("studios.urls", namespace="studios")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
