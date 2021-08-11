@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container w-4/5 mt-16 mb-40 mx-auto">
     <div class="w-4/5 mx-auto">
-        <h1 class="font-bold text-2xl mb-10">스튜디오 수정</h1>
+        <h1 class="font-bold text-2xl mb-10 text-yellow-400">스튜디오 수정</h1>
     <form action="{% url 'studios:update' studio.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}

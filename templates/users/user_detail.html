@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block page_title %}My Page{% endblock %}
+{% block page_title %}{{user.nickname}}{% endblock %}
 
 {% block content %}
 
@@ -36,10 +36,13 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="flex justify-end">
-            <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
-            <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
-        </div>
+
+        {% if user.is_authenticated %}
+            <div class="flex justify-end">
+                <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
+                <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 
