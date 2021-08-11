@@ -1,8 +1,18 @@
-<div class="w-1/5 border-r mr-10">
-    <h1 class="font-bold text-2xl mb-5">{{studio.host.nickname}}의 스튜디오</h1>
-    <ul class="mb-14">
+<div class="w-1/5 border-r mr-10 border-gray-500">
+    <h1 class="font-bold text-2xl mb-10 text-yellow-400">{{studio.host.nickname}}의 스튜디오</h1>
+    <ul class="mb-14 w-full">
         <li class="mypage-nav-item mb-10">
-            프로필
+            {% if studio.host.avatar %}
+                <div class="{{h_and_w|default:'h-40 w-40'}} rounded-full bg-cover" style="background-image: url({{studio.host.avatar.url}});"></div>
+            {% else %}
+                <div class="{{h_and_w|default:'h-40 w-40'}} bg-gray-200 rounded-full text-busker-navy flex justify-center items-center overflow-hidden">
+                    <span class="{{text|default:'text-3xl'}}">{{studio.host.first_name}}</span>
+                </div>
+            {% endif %}
+            <div class="mt-5 border-b border-gray-500 pb-3 w-11/12">
+                <span class="font-medium text-base block"><i class="fas fa-microphone text-yellow-400 mr-2"></i>자기소개</span>
+                <span class="font-medium text-sm">{{studio.host.bio}}</span>
+            </div>
         </li>
         <li class="mypage-nav-item">
             <h2>커뮤니티</h2>
@@ -14,5 +24,4 @@
             <a href="#">자유게시판</a>
         </li>
     </ul>
-    
 </div>
