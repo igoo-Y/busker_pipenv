@@ -2,8 +2,6 @@ from django import forms
 from django.forms import fields, widgets
 from . import models
 
-CHOICES = [("공지사항", "공지사항"), ("자유게시판", "자유게시판")]
-
 
 class CreatePostForm(forms.ModelForm):
     class Meta:

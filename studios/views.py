@@ -13,6 +13,46 @@ from django.views.generic import (
 from . import models, forms
 
 
+class UpdatePostView(UpdateView):
+
+    model = models.Post
+    template_name = "studios/post_update.html"
+    fields = (
+        "title",
+        "body",
+        "category",
+    )
+
+    def get_success_url(self):
+        pk = self.kwargs.get("pk")
+        studio_pk = self.kwargs.get("studio_pk")
+        return reverse("studios:post-detail", kwargs={"pk": pk, "studio_pk": studio_pk})
+
+
+class DetailPostView(DetailView):
+
+    model = models.Post
+    template_name = "studios/post_detail.html"
+
+
+class AddPostView(FormView):
+
+    model = models.Post
+    template_name = "studios/post_create.html"
+    fields = (
+        "title",
+        "body",
+        "category",
+    )
+    form_class = forms.CreatePostForm
+
+    def form_valid(self, form):
+        pk = self.kwargs.get("pk")
+        user = self.request.user
+        form.save(pk, user)
+        return redirect(reverse("studios:posts", kwargs={"pk": pk}))
+
+
 class StudioPostsView(DetailView):
 
     model = models.Studio
@@ -61,27 +101,3 @@ class CreateStudioView(FormView):
         studio.host = self.request.user
         studio.save()
         return redirect(reverse("studios:posts", kwargs={"pk": studio.pk}))
-
-
-class DetailPostView(DetailView):
-
-    model = models.Post
-    template_name = "studios/post_detail.html"
-
-
-class AddPostView(FormView):
-
-    model = models.Post
-    template_name = "studios/post_create.html"
-    fields = (
-        "title",
-        "body",
-        "category",
-    )
-    form_class = forms.CreatePostForm
-
-    def form_valid(self, form):
-        pk = self.kwargs.get("pk")
-        user = self.request.user
-        form.save(pk, user)
-        return redirect(reverse("studios:posts", kwargs={"pk": pk}))
