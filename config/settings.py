@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "broadcasts.apps.BroadcastsConfig",
     "studios.apps.StudiosConfig",
-    "posts.apps.PostsConfig",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",

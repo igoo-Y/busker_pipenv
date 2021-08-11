@@ -10,12 +10,17 @@
     <div class="flex flex-col w-4/5">
         <div class="w-full h-56 bg-cover bg-center mb-10" style="background-image: url({{studio.image.url}});"></div>
         <div>
-            <a href="#">글쓰기</a>
+            {% for post in studio.posts.all %}
+                {% include 'posts/post_list.html' with studio=studio %}
+            {% endfor %}
         </div>
+        <a href="#">글쓰기</a>
         
         <div class="flex justify-end">
-            <a href="{% url 'studios:update' studio.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 수정</a>
-            <a href="{% url 'studios:delete' studio.pk %}" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 삭제</a>
+            {% if user == studio.host %}
+                <a href="{% url 'studios:update' studio.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 수정</a>
+                <a href="{% url 'studios:delete' studio.pk %}" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 삭제</a>
+            {% endif %}
         </div>
     </div>
 </div>
