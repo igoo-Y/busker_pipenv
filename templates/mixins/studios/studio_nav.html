@@ -10,8 +10,16 @@
                 </div>
             {% endif %}
             <div class="mt-5 border-b border-gray-500 pb-3 w-11/12">
-                <span class="font-medium text-base block"><i class="fas fa-microphone text-yellow-400 mr-2"></i>자기소개</span>
-                <span class="font-medium text-sm">{{studio.host.bio}}</span>
+                <div>
+                    <span class="font-medium text-base block">
+                        <i class="fas fa-microphone text-yellow-400 mr-2"></i>
+                        자기소개
+                        {% if studio.host == user %}
+                            <a href="{% url 'users:update' %}" class="bg-yellow-400 text-busker-navy text-xs ml-5 rounded-2xl px-2">edit</a>
+                        {% endif %}
+                    </span>
+                    <span class="font-medium text-sm">{{studio.host.bio}}</span>
+                </div>
             </div>
         </li>
         <li class="mypage-nav-item">
