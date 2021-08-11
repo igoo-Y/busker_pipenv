@@ -54,7 +54,7 @@ class Studio(core_models.TimeStampedModel):
         upload_to="studio_images",
         blank=True,
         null=True,
-        default="studio_images/live_app_image.jpg",
+        default="broadcast_images/no_image.png",
     )
     host = models.OneToOneField(
         user_models.User,

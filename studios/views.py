@@ -14,6 +14,7 @@ from . import models, forms
 
 
 class DeletePostView(DeleteView):
+
     model = models.Post
     template_name = "studios/post_confirm_delete.html"
 
@@ -46,14 +47,8 @@ class DetailPostView(DetailView):
 
 class AddPostView(FormView):
 
-    model = models.Post
-    template_name = "studios/post_create.html"
-    fields = (
-        "title",
-        "body",
-        "category",
-    )
     form_class = forms.CreatePostForm
+    template_name = "studios/post_create.html"
 
     def form_valid(self, form):
         pk = self.kwargs.get("pk")

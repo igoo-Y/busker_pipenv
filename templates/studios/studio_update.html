@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block page_title %}스튜디오 수정하기{% endblock page_title %}
+{% block page_title %}스튜디오 수정 및 삭제{% endblock page_title %}
 
 {% block content %}
 <div class="container w-4/5 mt-16 mb-40 mx-auto">
@@ -11,6 +11,8 @@
         {{form.as_p}}
         <button type="submit" class="btn w-full">스튜디오 수정하기</button>
     </form>
+
+    <a href="{% url 'studios:delete' studio.pk %}" class="text-center block btn bg-red-500 text-gray-100">스튜디오 삭제하기</a>
     </div>
 </div>
     

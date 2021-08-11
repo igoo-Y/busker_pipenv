@@ -8,10 +8,10 @@
     {% include 'mixins/studios/studio_nav.html' %}
 
     <div class="flex flex-col w-4/5">
-        <div class="w-full h-56 bg-cover bg-center mb-10" style="background-image: url({{studio.image.url}});"></div>
+        <div class="w-full h-56 bg-cover bg-center mb-10 opacity-80" style="background-image: url({{studio.image.url}});"></div>
         <div class="flex justify-between mb-10">
             <span class="text-2xl">| 공지사항</span>
-            <a href="{% url 'studios:add-post' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
+            <a href="{% url 'studios:add-posts' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
         </div>
         <div>
             <table class="w-full mb-20">
@@ -27,7 +27,11 @@
                     {% for post in studio.posts.all %}
                         <tr class="h-16 border-b border-gray-500">
                             <td class="w-8 text-center font-light">{{post.pk}}</td>
-                            <td class="w-64 text-left pl-10 font-light"><a href="{% url 'studios:post-detail' studio_pk=studio.pk pk=post.pk %}">{{post.title}}</a></td>
+                            <td class="w-64 text-left pl-10 font-light">
+                                <a href="{% url 'studios:post-detail' studio_pk=studio.pk pk=post.pk %}">
+                                    {{post.title}}
+                                </a>
+                            </td>
                             <td class="w-20 text-center font-light">{{post.writer.nickname}}</td>
                             <td class="w-20 text-center font-light">{{post.created|date:"D d M Y"}}</td>
                         </tr>
@@ -38,8 +42,7 @@
         
         <div class="flex justify-end">
             {% if user == studio.host %}
-                <a href="{% url 'studios:update' studio.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 수정</a>
-                <a href="{% url 'studios:delete' studio.pk %}" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 삭제</a>
+                <a href="{% url 'studios:update' studio.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">스튜디오 수정 및 삭제</a>
             {% endif %}
         </div>
     </div>

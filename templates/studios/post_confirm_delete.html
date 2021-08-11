@@ -6,7 +6,7 @@
 <div class="container w-4/5 mt-16 mb-40 mx-auto h-75vh">
     <form method="post" class=" bg-white w-full h-25vh p-12 rounded-md text-black">
         {% csrf_token %}
-        <p class="text-xl mb-8 w-full">경고❗️ 정말로 "{{ object }}" 게시글을 삭제하시겠습니까?? 삭제하기 버튼을 누를 시, 해당 게시글 관련 데이터가 모두 삭제됩니다.</p>
+        <p class="text-xl mb-8 w-full">경고❗️ 정말로 "{{ object }}" 게시글을 삭제하시겠습니까?? 삭제하기 버튼을 누를 시, 해당 게시글에 관련된 모든 데이터가 삭제됩니다.</p>
         <input type="submit" value="삭제" class="block w-64 absolute bg-red-500 text-white border-none cursor-pointer">
     </form>
 </div>

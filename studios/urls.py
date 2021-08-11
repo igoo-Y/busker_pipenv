@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         "<int:pk>/posts/add",
         views.AddPostView.as_view(),
-        name="add-post",
+        name="add-posts",
     ),
     path(
         "<int:studio_pk>/posts/<int:pk>/",

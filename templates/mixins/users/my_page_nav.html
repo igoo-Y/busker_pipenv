@@ -16,26 +16,24 @@
         <li class="mypage-nav-item">
             <h2>버스커 관리</h2>
         </li>
-        <li class="mypage-nav-link">
-            <a href="{% url 'broadcasts:detail' user.broadcast.pk %}">내 방송채널 가기</a>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="{% url 'studios:posts' user.studio.pk %}">내 스튜디오 가기</a>
-        </li>
+        {% if user.broadcast %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'broadcasts:detail' user.broadcast.pk %}">내 방송채널 가기</a>
+            </li>
+        {% else %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'broadcasts:create' %}">채널 만들기</a>
+            </li>
+        {% endif %}
+        {% if user.studio %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'studios:posts' user.studio.pk %}">내 스튜디오 가기</a>
+            </li>
+        {% else %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'studios:create' %}">스튜디오 만들기</a>
+            </li>
+        {% endif %}
     </ul>
     {% endif %}
-    <!-- <ul class="mb-14">
-        <li class="mypage-nav-item">
-            <h2>후원 관리(준비중)</h2>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원정보</a>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원금 충전</a>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원금 관리</a>
-        </li>
-    </ul> -->
 </div>

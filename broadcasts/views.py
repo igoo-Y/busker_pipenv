@@ -1,8 +1,10 @@
 from django.http import request
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.urls.base import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from django.http import Http404
+from django.views.generic.edit import DeleteView
 from . import models, forms
 import broadcasts
 import random
@@ -16,6 +18,13 @@ def home(request):
 def main_view(request):
     context = {}
     return render(request, "broadcasts/main.html", context=context)
+
+
+class DeleteBroadcastView(DeleteView):
+
+    model = models.Broadcast
+    template_name = "broadcasts/broadcast_confirm_delete.html"
+    success_url = reverse_lazy("core:home")
 
 
 class BroadcastDetail(DetailView):
