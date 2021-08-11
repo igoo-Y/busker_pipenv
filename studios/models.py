@@ -20,6 +20,9 @@ class Post(core_models.TimeStampedModel):
 
     """Post Model Definition"""
 
+    class Meta:
+        ordering = ["-created"]
+
     NOTICE = "NT"
     BULLETIN = "BL"
     BOARD_CHOICES = [

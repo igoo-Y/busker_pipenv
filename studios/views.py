@@ -13,6 +13,15 @@ from django.views.generic import (
 from . import models, forms
 
 
+class DeletePostView(DeleteView):
+    model = models.Post
+    template_name = "studios/post_confirm_delete.html"
+
+    def get_success_url(self):
+        pk = self.kwargs.get("studio_pk")
+        return reverse("studios:posts", kwargs={"pk": pk})
+
+
 class UpdatePostView(UpdateView):
 
     model = models.Post

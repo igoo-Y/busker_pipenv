@@ -14,15 +14,26 @@
             <a href="{% url 'studios:add-post' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
         </div>
         <div>
-            {% for post in studio.posts.all %}
-                <div class="w-full h-20 border-t border-b border-gray-300 my-3 flex items-center">
-                    <a href="{% url 'studios:post-detail' studio_pk=studio.pk pk=post.pk %}">
-                        <ul>
-                            <li>{{post.title}}</li>
-                        </ul>
-                    </a>
-                </div>
-            {% endfor %}
+            <table class="w-full mb-20">
+                <thead class="h-12 bg-gray-900 mb-10">
+                    <tr>
+                        <th colspan="1" class="w-8 font-medium text-gray-300">번호</th>
+                        <th colspan="1" class="w-64 font-medium text-gray-300">제목</th>
+                        <th colspan="1" class="w-20 font-medium text-gray-300">작성자</th>
+                        <th colspan="1" class="w-20 font-medium text-gray-300">작성일자</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in studio.posts.all %}
+                        <tr class="h-16 border-b border-gray-500">
+                            <td class="w-8 text-center font-light">{{post.pk}}</td>
+                            <td class="w-64 text-left pl-10 font-light"><a href="{% url 'studios:post-detail' studio_pk=studio.pk pk=post.pk %}">{{post.title}}</a></td>
+                            <td class="w-20 text-center font-light">{{post.writer.nickname}}</td>
+                            <td class="w-20 text-center font-light">{{post.created|date:"D d M Y"}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
         
         <div class="flex justify-end">

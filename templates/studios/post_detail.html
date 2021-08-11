@@ -17,7 +17,7 @@
         <div class="flex justify-end">
             <a href="{% url 'studios:posts' post.studio.pk %}" class="bg-blue-300 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-28 text-center">목록</a>
             <a href="{% url 'studios:post-update' studio_pk=post.studio.pk pk=post.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">게시글 수정</a>
-            <a href="#" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">게시글 삭제</a>
+            <a href="{% url 'studios:post-delete' studio_pk=post.studio.pk pk=post.pk %}" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">게시글 삭제</a>
         </div>
     </div>
 </div>
