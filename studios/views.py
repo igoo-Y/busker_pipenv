@@ -7,8 +7,16 @@ from django.views.generic import (
     DetailView,
     UpdateView,
     DeleteView,
+    ListView,
+    FormView,
 )
 from . import models, forms
+
+
+class StudioPostsView(DetailView):
+
+    model = models.Studio
+    template_name = "studios/studio_posts.html"
 
 
 class DeleteStudioView(DeleteView):
@@ -43,7 +51,7 @@ class DetailStudioView(DetailView):
     context_object_name = "studio"
 
 
-class CreateStudioView(CreateView):
+class CreateStudioView(FormView):
 
     template_name = "studios/studio_create.html"
     form_class = forms.CreateStudioForm
@@ -52,4 +60,28 @@ class CreateStudioView(CreateView):
         studio = form.save()
         studio.host = self.request.user
         studio.save()
-        return redirect(reverse("studios:detail", kwargs={"pk": studio.pk}))
+        return redirect(reverse("studios:posts", kwargs={"pk": studio.pk}))
+
+
+class DetailPostView(DetailView):
+
+    model = models.Post
+    template_name = "studios/post_detail.html"
+
+
+class AddPostView(FormView):
+
+    model = models.Post
+    template_name = "studios/post_create.html"
+    fields = (
+        "title",
+        "body",
+        "category",
+    )
+    form_class = forms.CreatePostForm
+
+    def form_valid(self, form):
+        pk = self.kwargs.get("pk")
+        user = self.request.user
+        form.save(pk, user)
+        return redirect(reverse("studios:posts", kwargs={"pk": pk}))

@@ -11,15 +11,20 @@
             <a href="{% url 'users:update' %}">프로필 수정</a>
         </li>
     </ul>
+    {% if user.busker %}
     <ul class="mb-14">
         <li class="mypage-nav-item">
-            <h2>구독(준비중)</h2>
+            <h2>버스커 관리</h2>
         </li>
         <li class="mypage-nav-link">
-            <a href="#">구독 중인 버스커</a>
+            <a href="{% url 'broadcasts:detail' user.broadcast.pk %}">내 방송채널 가기</a>
+        </li>
+        <li class="mypage-nav-link">
+            <a href="{% url 'studios:posts' user.studio.pk %}">내 스튜디오 가기</a>
         </li>
     </ul>
-    <ul class="mb-14">
+    {% endif %}
+    <!-- <ul class="mb-14">
         <li class="mypage-nav-item">
             <h2>후원 관리(준비중)</h2>
         </li>
@@ -32,5 +37,5 @@
         <li class="mypage-nav-link">
             <a href="#">후원금 관리</a>
         </li>
-    </ul>
+    </ul> -->
 </div>

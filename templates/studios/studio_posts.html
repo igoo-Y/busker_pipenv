@@ -9,12 +9,21 @@
 
     <div class="flex flex-col w-4/5">
         <div class="w-full h-56 bg-cover bg-center mb-10" style="background-image: url({{studio.image.url}});"></div>
+        <div class="flex justify-between mb-10">
+            <span class="text-2xl">| 공지사항</span>
+            <a href="{% url 'studios:add-post' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
+        </div>
         <div>
             {% for post in studio.posts.all %}
-                {% include 'studios/post_list.html' %}
+                <div class="w-full h-20 border-t border-b border-gray-300 my-3 flex items-center">
+                    <a href="{% url 'studios:post-detail' studio_pk=studio.pk pk=post.pk %}">
+                        <ul>
+                            <li>{{post.title}}</li>
+                        </ul>
+                    </a>
+                </div>
             {% endfor %}
         </div>
-        <a href="{% url 'studios:post-create' studio.pk %}">새 글쓰기</a>
         
         <div class="flex justify-end">
             {% if user == studio.host %}

@@ -65,7 +65,7 @@ class Broadcast(core_models.TimeStampedModel):
     )
     host = models.OneToOneField(
         user_models.User,
-        related_name="broadcasts",
+        related_name="broadcast",
         on_delete=models.CASCADE,
         primary_key=True,
     )
