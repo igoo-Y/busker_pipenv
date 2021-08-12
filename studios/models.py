@@ -36,7 +36,7 @@ class Post(core_models.TimeStampedModel):
     writer = models.ForeignKey(
         user_models.User, related_name="posts", on_delete=models.CASCADE
     )
-    body = RichTextField(null=True)
+    body = RichTextUploadingField(null=True)
     studio = models.ForeignKey("Studio", related_name="posts", on_delete=models.CASCADE)
     category = models.CharField(
         max_length=40, null=True, choices=BOARD_CHOICES, default=BULLETIN
