@@ -9,8 +9,13 @@
         <div class="w-3/4 h-75vh rounded-md bg-busker-navy bg-cover bg-center flex flex-col justify-center items-center opacity-70" style="background-image: url(/media/broadcast_images/no_image.png);">
             <i class="fas fa-play text-7xl mb-5 hover:opacity-80"></i>
         </div>
-        <div class="w-1/4 h-75vh bg-gray-100 ml-4 rounded-md">
-        </div>
+        <div class="w-1/4 h-75vh bg-gray-100 ml-4 rounded-md flex flex-col relative">
+            <textarea class="resize-none border h-5/6 rounded-md"></textarea> 
+            <input type="text ring-gray-300" name="chat" placeholder="채팅창에 글을 입력해주세요" id="id_chat" class="w-11/12 mx-1 absolute bottom-11 right-2">
+            <div class="absolute bottom-2 right-2">
+                <button class=" bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-6 border border-yellow-700 rounded ">Send</button>
+            </div>
+        </div>    
     </div>
     <div>
         <div class="flex justify-between mb-1">
