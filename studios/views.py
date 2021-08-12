@@ -31,7 +31,6 @@ class UpdatePostView(UpdateView):
     fields = (
         "title",
         "body",
-        "category",
     )
 
     def get_success_url(self):

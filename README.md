@@ -8,3 +8,4 @@
 * django-dotenv
 * tailwindCSS
 * allauth
+* ckeditor
