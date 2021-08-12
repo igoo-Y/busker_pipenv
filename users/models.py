@@ -48,7 +48,7 @@ class User(AbstractUser):
     currency = models.CharField(
         max_length=3, choices=CURRENCY_CHOICES, blank=True, null=True
     )
-    busker = models.BooleanField(blank=True, null=True)
+    busker = models.BooleanField(null=True)
     login_method = models.CharField(
         max_length=20, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
     )
