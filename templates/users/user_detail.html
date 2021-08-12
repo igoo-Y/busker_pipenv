@@ -25,14 +25,6 @@
                 <span class="text-xl block">{{user_obj.bio}}</span>
             </div>
         </div>
-        
-        <div class="mb-2">
-            {% if user.broadcasts.count > 0 %}
-                {% for broadcast in user.broadcasts.all %}
-                    {{broadcast.name}}
-                {% endfor %}
-            {% endif %}
-        </div>
 
         {% if user.is_authenticated %}
             <div class="flex justify-end">

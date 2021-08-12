@@ -2,7 +2,7 @@ from django.http import request
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.urls.base import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, FormView
 from django.http import Http404
 from django.views.generic.edit import DeleteView
 from . import models, forms
@@ -11,7 +11,7 @@ import random
 
 
 def home(request):
-    broadcasts = models.Broadcast.objects.all()
+    broadcasts = models.Broadcast.objects.filter(on_air=True)
     random_on_air = models.Broadcast.objects.filter(on_air=True).order_by("?").first()
     return render(
         request,
@@ -45,7 +45,7 @@ class BroadcastDetail(DetailView):
         return on_air_list
 
 
-class CreateBroadcastView(CreateView):
+class CreateBroadcastView(FormView):
 
     template_name = "broadcasts/broadcast_create.html"
     form_class = forms.CreateBroadcastForm

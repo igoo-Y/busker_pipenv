@@ -12,7 +12,6 @@ class CreateBroadcastForm(forms.ModelForm):
             "desc",
             "image",
             "on_air",
-            "country",
             "genres",
             "picture_quality",
         )

@@ -25,6 +25,7 @@
                 <a href="{% url 'broadcasts:create' %}">채널 만들기</a>
             </li>
         {% endif %}
+        
         {% if user.studio %}
             <li class="mypage-nav-link">
                 <a href="{% url 'studios:posts' user.studio.pk %}">내 스튜디오 가기</a>
