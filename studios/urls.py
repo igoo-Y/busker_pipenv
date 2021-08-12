@@ -29,4 +29,9 @@ urlpatterns = [
         views.DeletePostView.as_view(),
         name="post-delete",
     ),
+    path(
+        "<int:studio_pk>/category/<str:category_name>/",
+        views.category_view,
+        name="category",
+    ),
 ]

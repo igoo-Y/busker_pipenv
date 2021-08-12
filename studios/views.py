@@ -13,6 +13,17 @@ from django.views.generic import (
 from . import models, forms
 
 
+def category_view(request, studio_pk, category_name):
+    category_posts = models.Post.objects.filter(category=category_name)
+    categories = models.Category.objects.all()
+    context = {
+        "category_posts": category_posts,
+        "categories": categories,
+        "studio_pk": studio_pk,
+    }
+    return render(request, "studios/categories.html", context=context)
+
+
 class DeletePostView(DeleteView):
 
     model = models.Post

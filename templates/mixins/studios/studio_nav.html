@@ -25,11 +25,10 @@
         <li class="mypage-nav-item">
             <h2>커뮤니티</h2>
         </li>
-        <li class="mypage-nav-item text-base font-medium">
-            <a href="#">공지사항</a>
-        </li>
-        <li class="mypage-nav-item text-base font-medium">
-            <a href="#">자유게시판</a>
-        </li>
+        {% for category in categories %}
+            <li class="mypage-nav-item text-base font-medium">
+                <a href="{% url 'studios:category' category.name %}">{{category.name}}</a>
+            </li>
+        {% endfor %}
     </ul>
 </div>
