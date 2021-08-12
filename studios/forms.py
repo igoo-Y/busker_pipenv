@@ -1,33 +1,38 @@
 from django import forms
-<<<<<<< HEAD
-from django.forms import models
-=======
-from django.forms import fields
->>>>>>> ingyu
+from django.forms import fields, widgets
 from . import models
+
+
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = (
+            "title",
+            "body",
+            "category",
+        )
+
+    def save(self, pk, user, *args, **kwargs):
+        post = super().save(commit=False)
+        studio = models.Studio.objects.get(pk=pk)
+        post.studio = studio
+        post.writer = user
+        post.save()
 
 
 class CreateStudioForm(forms.ModelForm):
     class Meta:
         model = models.Studio
-<<<<<<< HEAD
-        fields = ("name",)
-=======
         fields = (
             "name",
             "desc",
             "image",
         )
->>>>>>> ingyu
 
     def save(self, *args, **kwargs):
         studio = super().save(commit=False)
         return studio
 
 
-<<<<<<< HEAD
-class UpdateBroadcastForm(forms.Form):
-=======
 class UpdateStudioForm(forms.Form):
->>>>>>> ingyu
     pass

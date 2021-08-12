@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block page_title %}스튜디오 삭제하기{% endblock page_title %}
+{% block page_title %}방송채널 삭제하기{% endblock page_title %}
 
 {% block content %}
 <div class="container w-4/5 mt-16 mb-40 mx-auto h-75vh">
     <form method="post" class=" bg-white w-full h-25vh p-12 rounded-md text-black">
         {% csrf_token %}
-        <p class="text-xl mb-8 w-full">경고❗️ 정말로 "{{ object }}" 스튜디오를 삭제하시겠습니까?? 삭제하기 버튼을 누를 시, 해당 스튜디오에 관련된 모든 데이터가 삭제됩니다.</p>
+        <p class="text-xl mb-8 w-full">경고❗️ 정말로 "{{ object }}" 채널을 삭제하시겠습니까?? 삭제하기 버튼을 누를 시, 해당 채널에 관련된 모든 데이터가 삭제됩니다.</p>
         <input type="submit" value="삭제" class="block w-64 absolute bg-red-500 text-white border-none cursor-pointer">
     </form>
 </div>

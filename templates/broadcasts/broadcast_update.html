@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 
-{% block page_title %}채널 수정하기{% endblock page_title %}
+{% block page_title %}채널 수정 및 삭제{% endblock page_title %}
 
 {% block content %}
 
-<div class="container w-4/5 mt-16 mb-40 mx-auto">
+<div class="container w-4/5 mt-16 mb-64 mx-auto">
     <div class="w-4/5 mx-auto">
-        <h1 class="font-bold text-2xl mb-10">방송 채널 수정</h1>
-    <form action="{% url 'broadcasts:update' broadcast.pk %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit" class="btn w-full">수정하기</button>
-    </form>
+        <h1 class="font-bold text-2xl mb-10 text-yellow-400">방송 채널 수정 및 삭제</h1>
+        <form action="{% url 'broadcasts:update' broadcast.pk %}" method="POST" enctype="multipart/form-data" class="mb-5">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn w-full mt-10">수정하기</button>
+        </form>
+        <a href="{% url 'broadcasts:delete' broadcast.pk %}" class="text-center block btn bg-red-500 text-gray-100">삭제하기</a>
     </div>
 </div>
 
