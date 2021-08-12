@@ -1,5 +1,5 @@
-<div class="w-1/5 border-r mr-32">
-    <h1 class="font-bold text-2xl mb-5">마이 페이지</h1>
+<div class="w-1/5 mr-20  box-content h-90 w-32 p-10 border-4 rounded-lg"> 
+    <h1 class="font-bold text-2xl mb-5">My Page</h1>
     <ul class="mb-14">
         <li class="mypage-nav-item">
             <h2>프로필 관리</h2>
@@ -11,26 +11,30 @@
             <a href="{% url 'users:update' %}">프로필 수정</a>
         </li>
     </ul>
+    {% if user.busker %}
     <ul class="mb-14">
         <li class="mypage-nav-item">
-            <h2>구독(준비중)</h2>
+            <h2>버스커 관리</h2>
         </li>
-        <li class="mypage-nav-link">
-            <a href="#">구독 중인 버스커</a>
-        </li>
+        {% if user.broadcast %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'broadcasts:detail' user.broadcast.pk %}">내 방송채널 가기</a>
+            </li>
+        {% else %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'broadcasts:create' %}">채널 만들기</a>
+            </li>
+        {% endif %}
+        
+        {% if user.studio %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'studios:posts' user.studio.pk %}">내 스튜디오 가기</a>
+            </li>
+        {% else %}
+            <li class="mypage-nav-link">
+                <a href="{% url 'studios:create' %}">스튜디오 만들기</a>
+            </li>
+        {% endif %}
     </ul>
-    <ul class="mb-14">
-        <li class="mypage-nav-item">
-            <h2>후원 관리(준비중)</h2>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원정보</a>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원금 충전</a>
-        </li>
-        <li class="mypage-nav-link">
-            <a href="#">후원금 관리</a>
-        </li>
-    </ul>
+    {% endif %}
 </div>

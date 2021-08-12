@@ -1,16 +1,26 @@
 from django.http import request
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.urls.base import reverse_lazy
+from django.views.generic import CreateView, DetailView, UpdateView, FormView
 from django.http import Http404
+from django.views.generic.edit import DeleteView
 from . import models, forms
 import broadcasts
 import random
 
 
 def home(request):
-    broadcasts = models.Broadcast.objects.all()
-    return render(request, "broadcasts/home.html", {"broadcasts": broadcasts})
+    broadcasts = models.Broadcast.objects.filter(on_air=True)
+    random_on_air = models.Broadcast.objects.filter(on_air=True).order_by("?").first()
+    return render(
+        request,
+        "broadcasts/home.html",
+        {
+            "broadcasts": broadcasts,
+            "random_on_air": random_on_air,
+        },
+    )
 
 
 def main_view(request):
@@ -18,26 +28,24 @@ def main_view(request):
     return render(request, "broadcasts/main.html", context=context)
 
 
+class DeleteBroadcastView(DeleteView):
+
+    model = models.Broadcast
+    template_name = "broadcasts/broadcast_confirm_delete.html"
+    success_url = reverse_lazy("core:home")
+
+
 class BroadcastDetail(DetailView):
 
     model = models.Broadcast
     template_name = "broadcasts/broadcast_detail.html"
-    context_object_name = "broadcast"
 
     def get_queryset(self):
         on_air_list = models.Broadcast.objects.filter(on_air=True)
         return on_air_list
 
-    def get_random_pk(self):
-        random_broadcast = (
-            models.Broadcast.objects.filter(on_air=True).order_by("?").first()
-        )
-        random_pk = random_broadcast.pk
-        print(random_pk)
-        return random_pk
 
-
-class CreateBroadcastView(CreateView):
+class CreateBroadcastView(FormView):
 
     template_name = "broadcasts/broadcast_create.html"
     form_class = forms.CreateBroadcastForm

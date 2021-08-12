@@ -1,6 +1,27 @@
 from django import forms
+<<<<<<< HEAD
 from django.forms import fields
+=======
+from django.forms import fields, widgets
+>>>>>>> master
 from . import models
+
+
+class CreatePostForm(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = (
+            "title",
+            "body",
+            "category",
+        )
+
+    def save(self, pk, user, *args, **kwargs):
+        post = super().save(commit=False)
+        studio = models.Studio.objects.get(pk=pk)
+        post.studio = studio
+        post.writer = user
+        post.save()
 
 
 class CreateStudioForm(forms.ModelForm):

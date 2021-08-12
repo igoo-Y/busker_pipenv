@@ -65,7 +65,7 @@ class Broadcast(core_models.TimeStampedModel):
     )
     host = models.OneToOneField(
         user_models.User,
-        related_name="broadcasts",
+        related_name="broadcast",
         on_delete=models.CASCADE,
     )
 
@@ -78,8 +78,3 @@ class Broadcast(core_models.TimeStampedModel):
     def get_on_airs(self):
         on_airs = Broadcast.objects.filter(on_air=True)
         return on_airs
-
-    def get_random_pk(self):
-        random_broadcast = Broadcast.objects.filter(on_air=True).order_by("?").first()
-        random_pk = random_broadcast.pk
-        return random_pk

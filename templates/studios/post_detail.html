@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{post.title}}{% endblock %}
+
+{% block content %}
+
+<div class="container w-4/5 mx-auto mt-16 mb-40 flex flex-row">
+    {% include 'mixins/studios/studio_nav.html' with studio=post.studio %}
+
+    <div class="flex flex-col w-4/5">
+        <div class="w-full h-56 bg-cover bg-center mb-10" style="background-image: url({{post.studio.image.url}});"></div>
+        <h1>제목: {{post.title}}</h1>
+        <span>작성자: {{post.writer}}</span>
+        <span>{{post.created}}</span>
+        <p>{{post.body}}</p>
+
+        <div class="flex justify-end">
+            <a href="{% url 'studios:posts' post.studio.pk %}" class="bg-blue-300 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-28 text-center">목록</a>
+            <a href="{% url 'studios:post-update' studio_pk=post.studio.pk pk=post.pk %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">게시글 수정</a>
+            <a href="{% url 'studios:post-delete' studio_pk=post.studio.pk pk=post.pk %}" class="bg-red-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">게시글 삭제</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
