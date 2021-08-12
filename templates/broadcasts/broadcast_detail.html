@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto">
+<div class="container w-4/5 mx-auto mb-25vh">
     <div class="flex flex-row mt-12 mb-8">
         <div class="w-3/4 h-75vh rounded-md bg-busker-navy bg-cover bg-center flex flex-col justify-center items-center opacity-70" style="background-image: url(/media/broadcast_images/no_image.png);">
             <i class="fas fa-play text-7xl mb-5 hover:opacity-80"></i>
@@ -20,7 +20,7 @@
                 {% if broadcast.host == user %}
                     <a href="{% url 'broadcasts:update' pk=broadcast.pk %}" class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">내 채널 수정하기</a>
                 {% endif %}
-                <a href="{% url 'studios:category' studio_pk=broadcast.host.studio.pk category_name='공지사항' %}"><span class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">스튜디오 가기</span></a>
+                <a href="{% url 'studios:posts' broadcast.host.studio.pk %}"><span class="btn bg-yellow-400 rounded-full px-3 text-sm ml-3">스튜디오 가기</span></a>
             </div>
         </div>
         <div class="border-b border-gray-200 pb-8 mb-32">

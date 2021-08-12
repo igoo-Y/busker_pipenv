@@ -1,6 +1,6 @@
-<div class="w-1/5 border-r mr-10 border-gray-500">
+<div class="w-1/5 mr-20  box-content h-90 w-32 p-3 border-4 rounded-lg flex justify-center flex-col items-center"> 
     <h1 class="font-bold text-2xl mb-10 text-yellow-400">{{studio.host.nickname}}의 스튜디오</h1>
-    <ul class="mb-14 w-full">
+    <ul class="mb-14 w-full flex justify-center flex-col items-center">
         <li class="mypage-nav-item mb-10">
             {% if studio.host.avatar %}
                 <div class="{{h_and_w|default:'h-40 w-40'}} rounded-full bg-cover" style="background-image: url({{studio.host.avatar.url}});"></div>
@@ -22,13 +22,6 @@
                 </div>
             </div>
         </li>
-        <li class="mypage-nav-item">
-            <h2>커뮤니티</h2>
-        </li>
-        {% for category in categories %}
-            <li class="mypage-nav-item text-base font-medium">
-                <a href="{% url 'studios:category' category.name %}">{{category.name}}</a>
-            </li>
-        {% endfor %}
+        
     </ul>
 </div>

@@ -4,12 +4,11 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto mt-16 mb-40 flex flex-row">
+<div class="container w-4/5 mx-auto mt-16 mb-50vh flex flex-row">
     {% include 'mixins/users/my_page_nav.html' %}
 
     <div class="flex flex-col w-4/5">
-        <h1 class="font-bold text-2xl mb-10">내 프로필</h1>
-        <div class="flex flex-row border-b pb-14 mb-12">
+        <div class="flex flex-row  pb-14 mb-12 box-content h-40 w-70 p-12 border-4 rounded-lg">
             <div class="mr-10">
                 {% include 'mixins/users/user_avatar.html' %}
             </div>
@@ -26,10 +25,8 @@
                 <span class="text-xl block">{{user_obj.bio}}</span>
             </div>
         </div>
-        <div>
-            이름: {{user_obj.first_name}}
-        </div>
-        <div class="mb-32">
+        
+        <div class="mb-2">
             {% if user.broadcasts.count > 0 %}
                 {% for broadcast in user.broadcasts.all %}
                     {{broadcast.name}}

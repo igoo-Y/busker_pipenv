@@ -6,26 +6,14 @@
 
 <div class="container w-4/5 mx-auto">
     <div class="w-full h-75vh rounded-md bg-busker-navy mt-12 bg-cover bg-center flex flex-col justify-center items-center mb-36" style="background-image: url(https://images.unsplash.com/photo-1453090927415-5f45085b65c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&);">
-        <div class="hover:text-yellow-400">
+        <div>
             <a href="{% url 'broadcasts:detail' pk=random_on_air.pk %}" class="flex flex-col justify-center items-center">
                 <h1 class="text-white font-bold text-5xl mb-16">Anyone Can Sing, Anywhere</h1>
-                <i class="fas fa-play text-7xl mb-10"></i>
+                <i class="fas fa-play text-7xl mb-10 hover:opacity-70"></i>
                 <span class="text-white text-3xl">START RANDOM LIVE</span>
             </a>
         </div>
     </div> 
-
-    <!-- <div class="flex justify-center mb-16">
-        <span class="text-2xl border-b-2 py-2 font-bold">Genres</span>
-    </div>
-
-    <div class="flex flex-row flex-wrap mb-48">
-        <div class="w-1/4 pb-2 px-2">
-            <a href="#">
-                <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url(https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80);"></div>
-            </a>
-        </div>
-    </div> -->
 
     <div class="flex justify-center mb-16">
         <span class="text-2xl border-b-2 py-2 font-bold">On Air List</span>
