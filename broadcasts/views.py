@@ -12,7 +12,15 @@ import random
 
 def home(request):
     broadcasts = models.Broadcast.objects.all()
-    return render(request, "broadcasts/home.html", {"broadcasts": broadcasts})
+    random_on_air = models.Broadcast.objects.filter(on_air=True).order_by("?").first()
+    return render(
+        request,
+        "broadcasts/home.html",
+        {
+            "broadcasts": broadcasts,
+            "random_on_air": random_on_air,
+        },
+    )
 
 
 def main_view(request):
