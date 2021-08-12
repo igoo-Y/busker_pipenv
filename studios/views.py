@@ -2,10 +2,6 @@ from django.forms import forms
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.urls.base import reverse_lazy
-<<<<<<< HEAD
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from . import models, forms
-=======
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -76,7 +72,6 @@ class StudioPostsView(DetailView):
 
     model = models.Studio
     template_name = "studios/studio_posts.html"
->>>>>>> master
 
 
 class DeleteStudioView(DeleteView):
@@ -111,11 +106,7 @@ class DetailStudioView(DetailView):
     context_object_name = "studio"
 
 
-<<<<<<< HEAD
-class CreateStudioView(CreateView):
-=======
 class CreateStudioView(FormView):
->>>>>>> master
 
     template_name = "studios/studio_create.html"
     form_class = forms.CreateStudioForm

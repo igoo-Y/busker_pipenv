@@ -1,9 +1,5 @@
 from django import forms
-<<<<<<< HEAD
-from django.forms import fields
-=======
 from django.forms import fields, widgets
->>>>>>> master
 from . import models
 
 

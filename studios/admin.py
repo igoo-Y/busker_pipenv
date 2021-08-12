@@ -1,7 +1,5 @@
 from django.contrib import admin
 from . import models
-<<<<<<< HEAD
-=======
 
 
 @admin.register(models.Category)
@@ -31,4 +29,3 @@ class StudioAdmin(admin.ModelAdmin):
     ]
 
     raw_id_fields = ("host",)
->>>>>>> master
