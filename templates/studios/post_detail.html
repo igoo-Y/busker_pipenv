@@ -12,7 +12,7 @@
         <h1>제목: {{post.title}}</h1>
         <span>작성자: {{post.writer}}</span>
         <span>{{post.created}}</span>
-        <p>{{post.body}}</p>
+        <p>{{post.body|safe}}</p>
 
         <div class="flex justify-end">
             <a href="{% url 'studios:posts' post.studio.pk %}" class="bg-blue-300 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-28 text-center">목록</a>

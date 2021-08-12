@@ -10,18 +10,8 @@ from django.views.generic import (
     ListView,
     FormView,
 )
+from django.core.paginator import Paginator
 from . import models, forms
-
-
-def category_view(request, studio_pk, category_name):
-    category_posts = models.Post.objects.filter(category=category_name)
-    categories = models.Category.objects.all()
-    context = {
-        "category_posts": category_posts,
-        "categories": categories,
-        "studio_pk": studio_pk,
-    }
-    return render(request, "studios/categories.html", context=context)
 
 
 class DeletePostView(DeleteView):
@@ -41,7 +31,6 @@ class UpdatePostView(UpdateView):
     fields = (
         "title",
         "body",
-        "category",
     )
 
     def get_success_url(self):
@@ -68,10 +57,22 @@ class AddPostView(FormView):
         return redirect(reverse("studios:posts", kwargs={"pk": pk}))
 
 
-class StudioPostsView(DetailView):
-
-    model = models.Studio
-    template_name = "studios/studio_posts.html"
+def StudioPostsView(request, pk):
+    page = request.GET.get("page")
+    studio = models.Studio.objects.get(pk=pk)
+    studio_posts = models.Post.objects.filter(studio=studio)
+    paginator = Paginator(studio_posts, 10)
+    posts = paginator.get_page(page)
+    return render(
+        request,
+        "studios/studio_posts.html",
+        {
+            "pk": pk,
+            "studio_posts": studio_posts,
+            "studio": studio,
+            "posts": posts,
+        },
+    )
 
 
 class DeleteStudioView(DeleteView):

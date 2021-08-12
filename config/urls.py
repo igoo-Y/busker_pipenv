@@ -27,4 +27,5 @@ urlpatterns = [
     path("broadcasts/", include("broadcasts.urls", namespace="broadcasts")),
     path("studios/", include("studios.urls", namespace="studios")),
     path("accounts/", include("allauth.urls")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
