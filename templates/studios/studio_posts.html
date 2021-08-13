@@ -8,7 +8,9 @@
     {% include 'mixins/studios/studio_nav.html' %}
 
     <div class="flex flex-col w-4/5">
-        <div class="w-full h-64 bg-cover bg-center mb-10 opacity-80" style="background-image: url({{studio.image.url}});"></div>
+        <div class="w-full h-64 bg-cover bg-center mb-10 opacity-80 relative" style="background-image: url({{studio.image.url}});">
+            <span class="absolute top-1 right-2 text-sm font-bold">BUSKER</span>
+        </div>
         <div class="flex justify-between mb-10">
             <span class="text-2xl">커뮤니티</span>
             <a href="{% url 'studios:add-posts' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
