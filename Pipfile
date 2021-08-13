@@ -12,6 +12,7 @@ django-dotenv = "*"
 requests = "*"
 django-allauth = "*"
 django-rest-auth = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 black = "*"

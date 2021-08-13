@@ -1,6 +1,8 @@
 from typing import Tuple
 from django.db import models
 from django.urls import reverse
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from core import models as core_models
 import core
 from users import models as user_models
@@ -34,7 +36,7 @@ class Post(core_models.TimeStampedModel):
     writer = models.ForeignKey(
         user_models.User, related_name="posts", on_delete=models.CASCADE
     )
-    body = models.TextField(null=True)
+    body = RichTextUploadingField(null=True)
     studio = models.ForeignKey("Studio", related_name="posts", on_delete=models.CASCADE)
     category = models.CharField(
         max_length=40, null=True, choices=BOARD_CHOICES, default=BULLETIN
