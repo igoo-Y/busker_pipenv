@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = bool(os.environ.get("DEBUG", "True") != "False")
+DEBUG = os.environ.get("DEBUG", "True") != "False"
 
 
 ALLOWED_HOSTS = ["*"]
@@ -181,7 +181,7 @@ SITE_ID = 1
 # AWS
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME = "busker-likelion"
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_REGION_NAME = "ap-northeast-2"
 import dj_database_url
