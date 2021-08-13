@@ -49,7 +49,13 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.naver",
+<<<<<<< HEAD
     "allauth.socialaccount.providers.kakao"
+=======
+    "allauth.socialaccount.providers.kakao",
+    "ckeditor",
+    "ckeditor_uploader",
+>>>>>>> f4988b5309290f577d9ed38fe86ee91a1c8c4298
 ]
 
 MIDDLEWARE = [
@@ -138,6 +144,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 
 # Default primary key field type

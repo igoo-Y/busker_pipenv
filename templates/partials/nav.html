@@ -1,7 +1,15 @@
 <ul class="flex items-center justify-center h-full">
     {% if user.is_authenticated %}
         <li class="nav-link">
+<<<<<<< HEAD
             {{user.username}}
+=======
+            {% if user.nickname %}
+                {{user.nickname}}
+            {% else %}
+                <a href="{% url 'users:update' %}">닉네임 설정하기</a>
+            {% endif %}
+>>>>>>> f4988b5309290f577d9ed38fe86ee91a1c8c4298
             {% if user.busker %}
                 <i class="fas fa-microphone text-yellow-400 ml-1"></i>
             {% endif %}

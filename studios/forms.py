@@ -9,7 +9,6 @@ class CreatePostForm(forms.ModelForm):
         fields = (
             "title",
             "body",
-            "category",
         )
 
     def save(self, pk, user, *args, **kwargs):

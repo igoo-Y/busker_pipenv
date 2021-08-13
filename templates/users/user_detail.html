@@ -4,34 +4,40 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto mt-16 mb-50vh flex flex-row">
+<div class="container w-4/5 mx-auto mt-16 mb-64 flex flex-row">
     {% include 'mixins/users/my_page_nav.html' %}
 
     <div class="flex flex-col w-4/5">
-        <div class="flex flex-row  pb-14 mb-12 box-content h-40 w-70 p-12 border-4 rounded-lg">
+        <div class="flex flex-row pb-36 h-50vh pt-12 px-12 bg-gray-900 rounded-lg relative">
             <div class="mr-10">
                 {% include 'mixins/users/user_avatar.html' %}
             </div>
             <div class="w-full">
                 <div class="flex flex-row items-center mb-3">
                     <div class="flex flex-row items-center">
-                        <span class="text-3xl mr-3">{{user_obj.nickname}}</span>
+                        {% if user.nickname %}
+                            <span class="text-3xl mr-3 text-yellow-400">{{user_obj.nickname}}</span>
+                        {% else %}
+                            <span class="mr-3 text-yellow-400">닉네임을 추가해주세요</span>
+                        {% endif %}
+                        
                         {% if user_obj.busker %}
                             <span class="bg-indigo-600 py-1 px-3 text-sm rounded-xl">BUSKER</span>
                         {% endif %}
                     </div>
                 </div>
-                <span class="text-xl block mb-6 text-gray-200">{{user_obj.email}}</span>
+                <span class="text-xl block mb-6 text-gray-200  border-b border-gray-400 pb-5">{{user_obj.email}}</span>
                 <span class="text-xl block">{{user_obj.bio}}</span>
             </div>
+            
+            {% if user.is_authenticated %}
+                <div class="absolute bottom-5 right-12">
+                    <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
+                    <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
+                </div>
+            {% endif %}
+            
         </div>
-
-        {% if user.is_authenticated %}
-            <div class="flex justify-end">
-                <a href="{% url 'users:update' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2">프로필 수정</a>
-                <a href="{% url 'users:password' %}" class="bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold">패스워드 변경</a>
-            </div>
-        {% endif %}
     </div>
 </div>
 
