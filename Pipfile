@@ -16,6 +16,9 @@ django-ckeditor = "*"
 gunicorn = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
+whitenoise = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 black = "*"
