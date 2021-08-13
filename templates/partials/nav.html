@@ -1,7 +1,7 @@
 <ul class="flex items-center justify-center h-full">
     {% if user.is_authenticated %}
         <li class="nav-link">
-            {{user.nickname}}
+            {{user.username}}
             {% if user.busker %}
                 <i class="fas fa-microphone text-yellow-400 ml-1"></i>
             {% endif %}
