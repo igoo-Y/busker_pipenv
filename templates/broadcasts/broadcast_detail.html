@@ -71,8 +71,9 @@
                             </div>
                         {% else %}
                             <div class="w-full h-56 rounded-3xl mb-2 bg-gray-900 bg-cover bg-center">
-                                <div class="w-full h-56 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
+                                <div class="w-full h-56 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3 relative">
                                     <div class="w-full flex flex-col z-10">
+                                        <span class="text-lg font-bold text-yellow-400 absolute top-20 left-20">BUSKER</span>
                                         <span class="text-lg mb-px overflow-hidden text-yellow-400 font-semibold block truncate">{{ on_air.name }}</span>
                                         <div class="flex justify-between items-center">
                                             <span class="text-xs mb-px">{{on_air.host.nickname}}</span>

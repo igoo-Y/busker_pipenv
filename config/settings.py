@@ -179,8 +179,8 @@ ACCOUNT_LOGOUT_ON_GET = True  # 로그아웃 버튼 클릭 시 자동 로그아�
 SITE_ID = 1
 
 # AWS
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID = "AKIAV2JZRX7555UPJ3PJ"
+AWS_SECRET_ACCESS_KEY = "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"
 AWS_STORAGE_BUCKET_NAME = "busker-likelion"
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_REGION_NAME = "ap-northeast-2"
