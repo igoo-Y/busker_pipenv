@@ -32,6 +32,7 @@ class SignUpForm(forms.ModelForm):
             "nickname",
             "first_name",
             "last_name",
+            "busker",
         ]
 
     email = forms.EmailField(label="이메일")
