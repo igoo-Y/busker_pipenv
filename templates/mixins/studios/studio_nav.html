@@ -1,6 +1,6 @@
-<div class="w-1/5 mr-20  box-content h-90 w-32 p-3 border-4 rounded-lg flex justify-center flex-col items-center"> 
-    <h1 class="font-bold text-2xl mb-10 text-yellow-400">{{studio.host.nickname}}의 스튜디오</h1>
-    <ul class="mb-14 w-full flex justify-center flex-col items-center">
+<div class="w-1/5 mr-10  box-content h-100 w-100 p-3 border-4 rounded-lg justify-center items-center"> 
+    <h1 class="font-bold text-xl mb-10 text-yellow-400 p-5 border-b text-center">{{studio.host.nickname}}의 스튜디오</h1>
+    <ul class="mb-10 w-full flex justify-center flex-col items-center">
         <li class="mypage-nav-item mb-10">
             {% if studio.host.avatar %}
                 <div class="{{h_and_w|default:'h-40 w-40'}} rounded-full bg-cover" style="background-image: url({{studio.host.avatar.url}});"></div>
@@ -9,10 +9,10 @@
                     <span class="{{text|default:'text-3xl'}}">{{studio.host.first_name}}</span>
                 </div>
             {% endif %}
-            <div class="mt-5 border-b border-gray-500 pb-3 w-11/12">
+            <div class="mt-5 border-gray-500 pb-3 w-11/12">
                 <div>
                     <span class="font-medium text-base block">
-                        <i class="fas fa-microphone text-yellow-400 mr-2"></i>
+                        <i class="fas fa-microphone text-yellow-400 mr-2 mt-3 mb-3"></i>
                         자기소개
                         {% if studio.host == user %}
                             <a href="{% url 'users:update' %}" class="bg-yellow-400 text-busker-navy text-xs ml-5 rounded-2xl px-2">edit</a>
