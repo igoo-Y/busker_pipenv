@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto mt-16 mb-64 flex flex-row">
+<div class="container w-4/5 mx-auto mt-16 mb-50vh flex flex-row">
     {% include 'mixins/studios/studio_nav.html' %}
 
     <div class="flex flex-col w-4/5">
@@ -39,8 +39,8 @@
                 </tbody>
             </table>
 
-            <div class="w-full flex justify-center items-center text-lg mb-20 relative">
-                <span class="absolute right-0 text-sm p-3text-gray-300 ">{{posts.number}} 페이지</span>
+            <div class="w-full flex justify-center items-center text-lg relative">
+                <span class="absolute right-0 text-sm pb-5 text-gray-300 ">{{posts.number}} 페이지</span>
 
                 {% if posts.has_previous %}
                 <a href="?page={{posts.previous_page_number}}" class="text-gray-300 mr-3 pl-2 py-2 text-2xl hover:text-yellow-400"><i class="fas fa-angle-double-left"></i></a>
