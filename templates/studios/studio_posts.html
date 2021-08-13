@@ -4,11 +4,13 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto mt-16 mb-64 flex flex-row">
+<div class="container w-4/5 mx-auto mt-16 mb-50vh flex flex-row">
     {% include 'mixins/studios/studio_nav.html' %}
 
     <div class="flex flex-col w-4/5">
-        <div class="w-full h-64 bg-cover bg-center mb-10 opacity-80" style="background-image: url({{studio.image.url}});"></div>
+        <div class="w-full h-64 bg-cover bg-center mb-10 opacity-80 relative" style="background-image: url({{studio.image.url}});">
+            <span class="absolute top-1 right-2 text-sm font-bold">BUSKER</span>
+        </div>
         <div class="flex justify-between mb-10">
             <span class="text-2xl">커뮤니티</span>
             <a href="{% url 'studios:add-posts' studio.pk %}" class="text-center bg-yellow-500 rounded-xl py-1 px-5 text-busker-navy font-bold mr-2 w-32">새 글쓰기</a>
@@ -39,8 +41,8 @@
                 </tbody>
             </table>
 
-            <div class="w-full flex justify-center items-center text-lg mb-20 relative">
-                <span class="absolute right-0 text-sm p-3text-gray-300 ">{{posts.number}} 페이지</span>
+            <div class="w-full flex justify-center items-center text-lg relative">
+                <span class="absolute right-0 text-sm pb-5 text-gray-300 ">{{posts.number}} 페이지</span>
 
                 {% if posts.has_previous %}
                 <a href="?page={{posts.previous_page_number}}" class="text-gray-300 mr-3 pl-2 py-2 text-2xl hover:text-yellow-400"><i class="fas fa-angle-double-left"></i></a>

@@ -35,10 +35,10 @@
                     <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
                         <div class="w-full h-64 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
                             <div class="w-full flex flex-col">
-                                <span class="text-lg mb-px">{{broadcast.name}}</span>
+                                <span class="text-lg mb-px font-semibold text-yellow-400 block truncate">{{broadcast.name}}</span>
                                 <div class="flex justify-between items-center">
                                     <span class="text-xs mb-px">{{broadcast.host.nickname}}</span>
-                                    <div class="mr-3 p-0 flex items-center">
+                                    <div class="flex items-center">
                                     {% for g in broadcast.genres.all %}                                
                                         <span class="text-xs mb-px ml-2">{{g}}</span>                                                                         
                                     {% endfor %}

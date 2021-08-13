@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<div class="container w-4/5 mx-auto mt-16 mb-64 flex flex-row">
+<div class="container  mx-auto w-4/5 mt-16 mb-64 flex flex-row">
     {% include 'mixins/studios/studio_nav.html' %}
 
-    <div class="flex flex-col w-4/5">
+    <div class=" w-4/5">
         <div class="w-full h-64 bg-cover bg-center mb-10 opacity-80" style="background-image: url({{studio.image.url}});"></div>
         <div class="flex justify-between mb-10">
             <span class="text-2xl">{{category.name}}</span>
