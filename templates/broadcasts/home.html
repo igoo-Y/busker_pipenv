@@ -32,7 +32,8 @@
             {% if broadcast.on_air == True %}
             <div class="w-1/4 pb-2 px-2">
                 <a href="{% url 'broadcasts:detail' pk=broadcast.pk %}">
-                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
+                    {% if broadcast.image %}
+                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-900 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
                         <div class="w-full h-64 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
                             <div class="w-full flex flex-col">
                                 <span class="text-lg mb-px font-semibold text-yellow-400 block truncate">{{broadcast.name}}</span>
@@ -47,6 +48,24 @@
                             </div>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-900 bg-cover bg-center">
+                        <div class="w-full h-64 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3 relative">
+                            <div class="w-full flex flex-col">
+                                <span class="text-3xl font-bold text-yellow-400 absolute top-20 left-24">BUSKER</span>
+                                <span class="text-lg mb-px font-semibold text-yellow-400 block truncate">{{broadcast.name}}</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs mb-px">{{broadcast.host.nickname}}</span>
+                                    <div class="flex items-center">
+                                    {% for g in broadcast.genres.all %}                                
+                                        <span class="text-xs mb-px ml-2">{{g}}</span>                                                                         
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </a>
             </div>
             {% endif %}

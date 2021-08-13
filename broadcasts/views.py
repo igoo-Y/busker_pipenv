@@ -39,10 +39,11 @@ class BroadcastDetail(DetailView):
 
     model = models.Broadcast
     template_name = "broadcasts/broadcast_detail.html"
+    context_object_name = "broadcast"
 
     def get_queryset(self):
-        on_air_list = models.Broadcast.objects.filter(on_air=True)
-        return on_air_list
+        broadcasts = models.Broadcast.objects.all()
+        return broadcasts
 
 
 class CreateBroadcastView(FormView):
