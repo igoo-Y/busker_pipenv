@@ -54,7 +54,7 @@ class Broadcast(core_models.TimeStampedModel):
         upload_to="broadcast_images",
         blank=True,
         null=True,
-        default="broadcast_images/no_image.png",
+        default="img/static/img/no_image.png",
     )
     on_air = models.BooleanField(default=False, null=True)
     country = CountryField(blank_label="(select country)", default="KR")
