@@ -41,6 +41,13 @@
                         <span class="text-lg ml-3">{{g}}</span>                                                                         
                     {% endfor %}
                 </span>
+                <div class="border-r h-4 border-white ml-3"></div>
+                <span class="ml-3 text-blue-300">
+                    {% if broadcast.on_air %}
+                        <i class="fas fa-headset text-lg"></i>                                
+                        <span class="text-lg ml-1">On Air</span>                                                                         
+                    {% endfor %}
+                </span>
             </div>
             <span class="text-lg">{{broadcast.desc}}</span>
         </div>
