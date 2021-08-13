@@ -56,7 +56,7 @@ class Broadcast(core_models.TimeStampedModel):
         null=True,
         default="broadcast_images/no_image.png",
     )
-    on_air = models.BooleanField(default=False)
+    on_air = models.BooleanField(default=False, null=True)
     country = CountryField(blank_label="(select country)", default="KR")
     genres = models.ManyToManyField("Genre", blank=True)
     picture_quality = models.ForeignKey(

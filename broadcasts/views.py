@@ -40,10 +40,6 @@ class BroadcastDetail(DetailView):
     model = models.Broadcast
     template_name = "broadcasts/broadcast_detail.html"
 
-    def get_queryset(self):
-        on_air_list = models.Broadcast.objects.filter(on_air=True)
-        return on_air_list
-
 
 class CreateBroadcastView(FormView):
 
@@ -71,10 +67,3 @@ class UpdateBroadcastView(UpdateView):
         "genres",
         "picture_quality",
     )
-
-    def get_object(self, queryset=None):
-        broadcast = super().get_object(queryset=queryset)
-        if broadcast.host.pk != self.request.user.pk:
-            raise Http404()
-        else:
-            return broadcast
