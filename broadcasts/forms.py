@@ -18,7 +18,6 @@ class CreateBroadcastForm(forms.ModelForm):
 
     name = forms.CharField(label="채널 이름")
     desc = forms.CharField(label="채널 설명")
-    on_air = forms.BooleanField(label="생방송 여부")
 
     def save(self, *args, **kwargs):
         broadcast = super().save(commit=False)

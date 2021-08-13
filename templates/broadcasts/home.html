@@ -32,7 +32,7 @@
             {% if broadcast.on_air == True %}
             <div class="w-1/4 pb-2 px-2">
                 <a href="{% url 'broadcasts:detail' pk=broadcast.pk %}">
-                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-100 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
+                    <div class="w-full h-64 rounded-3xl mb-2 bg-gray-900 bg-cover bg-center" style="background-image: url({{broadcast.image.url}});">
                         <div class="w-full h-64 rounded-3xl bg-black bg-opacity-40 flex items-end px-3 pb-3">
                             <div class="w-full flex flex-col">
                                 <span class="text-lg mb-px font-semibold text-yellow-400 block truncate">{{broadcast.name}}</span>
