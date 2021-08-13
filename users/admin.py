@@ -33,9 +33,17 @@ class CustomUserAdmin(UserAdmin):
         "username",
         "email",
         "nickname",
+        "broadcast_name",
+        "studio_name",
         "gender",
         "language",
         "currency",
         "busker",
         "login_method",
     )
+
+    def broadcast_name(self, obj):
+        return obj.broadcast.name
+
+    def studio_name(self, obj):
+        return obj.studio.name

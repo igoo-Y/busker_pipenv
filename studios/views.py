@@ -86,18 +86,16 @@ class UpdateStudioView(UpdateView):
 
     model = models.Studio
     template_name = "studios/studio_update.html"
+
     fields = (
         "name",
         "desc",
         "image",
     )
 
-    def get_object(self, queryset=None):
-        studio = super().get_object(queryset=queryset)
-        if studio.host.pk != self.request.user.pk:
-            raise Http404()
-        else:
-            return studio
+    def get_success_url(self):
+        pk = self.kwargs.get("pk")
+        return reverse("studios:posts", kwargs={"pk": pk})
 
 
 class DetailStudioView(DetailView):

@@ -1,7 +1,7 @@
 <div class="w-1/5 border-gray-400 mr-10 p-3 border-4 rounded-lg justify-center items-center relative"> 
     <h1 class="font-bold text-xl mb-10 text-yellow-400 p-5 border-b text-center">{{studio.host.nickname}}의 스튜디오</h1>
     <ul class="mb-10 w-full flex justify-center flex-col items-center">
-        <li class="mypage-nav-item mb-10">
+        <li class="mypage-nav-item mb-4">
             {% if studio.host.avatar %}
                 <div class="{{h_and_w|default:'h-40 w-40'}} rounded-full bg-cover" style="background-image: url({{studio.host.avatar.url}});"></div>
             {% else %}
@@ -9,21 +9,20 @@
                     <span class="{{text|default:'text-3xl'}}">{{studio.host.first_name}}</span>
                 </div>
             {% endif %}
-            <div class="mt-5 border-gray-500 pb-3 w-11/12">
-                <div class="w-full absolute left-4">
-                    <span class="font-medium text-base block">
-                        <span>
-                            <i class="fas fa-microphone text-yellow-400 mr-px mt-3 mb-3"></i>
-                            <span>{{studio.host.nickname}}</span>
-                            {% if studio.host == user %}
-                                <a href="{% url 'users:update' %}" class="bg-yellow-400 text-busker-navy text-xs ml-5 rounded-2xl px-2">edit</a>
-                            {% endif %}
-                        </span>
-                    </span>
-                    <span class="font-medium text-sm">{{studio.desc}}</span>
-                </div>
-            </div>
+            
         </li>
+        <div class="border-gray-500 pb-3 w-11/12">
+            <span class="font-medium text-base block">
+                <span>
+                    <i class="fas fa-microphone text-yellow-400 mr-px mt-3 mb-2"></i>
+                    <span>{{studio.host.nickname}}</span>
+                    {% if studio.host == user %}
+                        <a href="{% url 'studios:update' studio.pk %}" class="bg-yellow-400 text-busker-navy text-xs ml-5 rounded-2xl px-2">edit</a>
+                    {% endif %}
+                </span>
+            </span>
+            <span class="font-medium text-sm">{{studio.desc}}</span>
+        </div>
         
     </ul>
 </div>

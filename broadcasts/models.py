@@ -36,7 +36,6 @@ class Genre(core_models.TimeStampedModel):
     """Genre Model Definition"""
 
     name = models.CharField(max_length=80)
-    image = models.ImageField(upload_to="genre_images", blank=True, null=True)
 
     class Meta:
         verbose_name = "Genre"
@@ -58,7 +57,6 @@ class Broadcast(core_models.TimeStampedModel):
         default="broadcast_images/no_image.png",
     )
     on_air = models.BooleanField(default=False)
-    country = CountryField(blank_label="(select country)")
     genres = models.ManyToManyField("Genre", blank=True)
     picture_quality = models.ForeignKey(
         "PictureQuality", on_delete=models.SET_NULL, null=True, blank=True
